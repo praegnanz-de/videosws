@@ -54,7 +54,7 @@ True, if one-time fee required to use player.
 True, if paid subscription is required to use player.
 
 ### pricing.freeAvailable (boolean, sometimes required)
-True, if there's also a free version available. Only required if `pricing.once = true` or `pricing.subscription` = true.
+True, if there's also a free version available. Only required if `pricing.once = true` or `pricing.subscription = true`.
 
 
 ### example.html (string)
@@ -76,7 +76,7 @@ Library / libraries your player needs to run. Create an issue to add other libra
 - react
 
 ### flags.flash (boolean)
-True, if your player provides a flash fallback.
+True, if your player provides a flash version.
 
 ### flags.api (boolean)
 True, if your player provides an API.
@@ -129,7 +129,7 @@ Services / Platforms, your player has special support for.
 True, if player is skinnable in a easy way or themes are provided.
 
 ### flags.audioOnly (boolean)
-True, if player has an adio only mode to display audio in a beautiful way.
+True, if player has an audio only mode to display audio in a beautiful way.
 
 ### flags.speedControl (boolean)
 True, if player has the option to change playback speed (1x, 2x, etc.).
