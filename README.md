@@ -1,6 +1,6 @@
 # playerinfo.json
 
-## Note
+## Notes
 
 ### URLs
 All URLs are required to start with either `http://` or `https://`. Also, we'll do a HEAD request to check, if your 
@@ -134,8 +134,8 @@ True, if player has an audio only mode to display audio in a beautiful way.
 ### flags.speedControl (boolean)
 True, if player has the option to change playback speed (1x, 2x, etc.).
 
-## flags.qualityControl (boolean)
-True, if player as the option to change video quality (480p, 720p, etc.).
+### flags.qualityControl (boolean)
+True, if player has the option to change video quality (480p, 720p, etc.).
 
 ### flags.hosted (boolean|string, required)
 One of the following values

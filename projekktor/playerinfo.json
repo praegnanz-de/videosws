@@ -1,0 +1,42 @@
+{
+  "name": "Projekktor",
+  "version": "1.3.09",
+  "url": "http://www.projekktor.com/",
+  "description": "-",
+  "repository": "https://github.com/frankyghost/projekktor",
+  "license": "gnugpl",
+  "pricing": {
+    "once": true,
+    "subscription": false,
+    "freeAvailable": true
+  },
+
+  "example": {
+    "css": ["themes/maccaco/projekktor.style.css"],
+    "jsHead": ["jquery-1.9.1.min.js", "projekktor-1.3.09.min.js"]
+  },
+
+  "flags": {
+    "library": "jquery",
+    "flash": true,
+    "api": true,
+    "unifiedLook": true,
+    "unifiedAPI": true,
+    "fullscreen": true,
+    "keyboard": false,
+    "subtitles": true,
+    "playlists": true,
+    "responsive": false,
+    "embeddable": false,
+    "cms": ["wordpress"],
+    "services": ["youtube"],
+    "skinnable": true,
+    "audioOnly": true,
+    "speedControl": false,
+    "qualityControl": true,
+    "hosted": false,
+    "aria": false,
+    "hls": true,
+    "dash": false
+  }
+}
