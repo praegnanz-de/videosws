@@ -60,6 +60,14 @@ True, if there's also a free version available. Only required if `pricing.once =
 ### example.html (string)
 Name of your example html, defaults to `index.html`.
 
+#### Available variables in your HTML
+- __{{player.poster}}__: URL to video poster (jpg)
+- __{{player.video.mp4}}__: URL to video (mp4)
+- __{{player.video.ogg}}__: URL to video (ogg)
+- __{{player.video.webm}}__: URL to video (webm)
+- __{{player.subtitles.srt}}__: URL to subtitles file (srt)
+- __{{player.chapters.srt}}__: URL to chapters file (srt)
+
 ### example.jsHead (string|string[])
 We'll add a &lt;script&gt; tag in our &lt;head&gt; for every local file or url you defined here.
 
@@ -67,7 +75,7 @@ We'll add a &lt;script&gt; tag in our &lt;head&gt; for every local file or url y
 We'll add a &lt;script&gt; tag before &lt;/body&gt; for every local file or url you defined here.
 
 
-### flags.library (string|string[])
+### flags.library (string|string[], required)
 Library / libraries your player needs to run. Create an issue to add other libraries.
 
 #### Available libraries
