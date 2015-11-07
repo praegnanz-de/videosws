@@ -12,8 +12,8 @@
   },
 
   "example": {
-    "css": [],
-    "jsHead": []
+    "css": ["mediaelementplayer.css"],
+    "jsFoot": ["jquery.js", "mediaelement-and-player.min.js"]
   },
 
   "flags": {
