@@ -27,7 +27,7 @@
     "playlists": false,
     "responsive": false,
     "embeddable": false,
-    "cms": ["wordpress", "drupal"],
+    "cms": ["wordpress", "drupal", "joomla", "typo3"],
     "services": ["youtube"],
     "skinnable": true,
     "audioOnly": true,
