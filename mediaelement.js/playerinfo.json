@@ -1,0 +1,41 @@
+{
+  "name": "mediaelement.js",
+  "version": "2.18.2",
+  "url": "http://www.projekktor.com/",
+  "description": "Our personal favourite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API.",
+  "repository": "http://github.com/johndyer/mediaelement/",
+  "license": "mit",
+  "pricing": {
+    "once": false,
+    "subscription": false,
+    "freeAvailable": true
+  },
+
+  "example": {
+    "css": [],
+    "jsHead": []
+  },
+
+  "flags": {
+    "flash": true,
+    "api": true,
+    "unifiedLook": true,
+    "unifiedAPI": true,
+    "fullscreen": true,
+    "keyboard": true,
+    "subtitles": true,
+    "playlists": false,
+    "responsive": false,
+    "embeddable": false,
+    "cms": ["wordpress", "drupal"],
+    "services": ["youtube"],
+    "skinnable": true,
+    "audioOnly": true,
+    "speedControl": false,
+    "qualityControl": false,
+    "hosted": false,
+    "aria": false,
+    "hls": false,
+    "dash": false
+  }
+}
