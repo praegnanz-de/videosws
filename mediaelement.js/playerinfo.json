@@ -17,6 +17,7 @@
   },
 
   "flags": {
+    "library": ["jquery"],
     "flash": true,
     "api": true,
     "unifiedLook": true,
