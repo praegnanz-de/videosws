@@ -1,0 +1,37 @@
+{
+  "name": "THEOplayer",
+  "version": "1.5.61",
+  "url": "https://www.theoplayer.com/",
+  "description": "THEOplayer is the world's most comprehensive HTML5 based video player for streaming content on the web. THEOplayer offers adaptive streaming of HTTP Live Streaming (also known as HLS) on all modern browsers and devices, without using any plugins. With THEOplayer, video publishers can use a single video player with a single streaming protocol to reach all their viewers, dramatically simplifying online video content distribution. THEOplayer removes the need for plugins such as Flash or Silverlight, providing a better user experience on more platforms and devices. THEOplayer is developed by OpenTelly, a fast-growing SaaS company located in Leuven (Belgium).",
+  "pricing": {
+    "once": false,
+    "subscription": true,
+    "freeAvailable": false
+  },
+  "example": {
+    "jsFoot": "https://cdn.theoplayer.com/latest/be571103-b0c2-4840-86a4-ed581824ca37/theoplayer.loader.js"
+  },
+  "flags": {
+    "library": "",
+    "flash": false,
+    "api": true,
+    "unifiedLook": true,
+    "unifiedAPI": true,
+    "fullscreen": true,
+    "keyboard": true,
+    "subtitles": true,
+    "playlists": true,
+    "responsive": true,
+    "embeddable": false,
+    "cms": [],
+    "services": [],
+    "skinnable": true,
+    "audioOnly": true,
+    "speedControl": true,
+    "qualityControl": true,
+    "hosted": "possible",
+    "aria": false,
+    "hls": true,
+    "dash": true
+  }
+}
