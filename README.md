@@ -31,7 +31,7 @@ Player description, has to be 1024 characters long or shorter.
 URL for your source code repository (example: `https://github.com/praegnanz.de/awesome-player`).
 
 
-### license (string)
+### license (string, required)
 Your player's license. You can use one of the licenses below or a URL to enter custom licenses. Create an issue to add
 other liceses which are not written by yourself.
 
@@ -45,6 +45,10 @@ other liceses which are not written by yourself.
 - lgpl
 - mit
 - mpl
+
+
+### deprecated (boolean)
+Set this to true, to mark player as deprecated.
 
 
 ### pricing.once (boolean, required)
@@ -65,6 +69,8 @@ Name of your example html, defaults to `index.html`.
 - __{{player.video.mp4}}__: URL to video (mp4)
 - __{{player.video.ogg}}__: URL to video (ogg)
 - __{{player.video.webm}}__: URL to video (webm)
+- __{{player.video.hls}}__: URL to video stream (HLS)
+- __{{player.video.dash}}__: URL to video stream (Dash)
 - __{{player.subtitles.srt}}__: URL to subtitles file (srt)
 - __{{player.chapters.srt}}__: URL to chapters file (srt)
 
