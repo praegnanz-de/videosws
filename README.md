@@ -91,14 +91,14 @@ Your player's license. You can use one of the licenses below or a URL to enter c
 - mit
 - mpl
 
-#### `flags.library` (string|string[])
+#### `library` (string|string[])
 Library / libraries your player needs to run. Available libraries are below. Create an issue to add other libraries.
 
 - jquery
 - mootools
 - react
 
-#### `flags.hosted` (boolean|string)
+#### `hosted` (boolean|string)
 One of the following values:
 
 - __true__: it's not allowed/possible to host the player by yourself, you have to use the CDN provided
