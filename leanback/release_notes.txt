@@ -1,0 +1,169 @@
+#2010-11-09 - Build 1 (iPad)
+[1] CHANGE JS: LeanBack player on iPad if subtitles available
+[2] CHANGE JS: controls always visible on iPad
+[3] CHANGE JS: get embedding code not available because of missing keyboard
+
+
+#2010-11-09 - Release
+[1] BUG JS: in Chrome when jumping in timeline the poster was shown instead of video (at this position)
+[2] BUG JS: fixed in embed-code generating
+
+#2010-11-08 - Release
+[1] BUG JS: fixed in embedding-code function; was to hard coded
+[2] REMOVED JS: the generated big play button if iOS3.2; this is an iOS3.2 bug, no way to do it otherwise, please update your device!!
+[3] BUG JS: fixed when fullscreen-button pressed in Safari on MacOS; now goes in WebkitFullscreen-Mode
+[4] CHANGE JS: button "f" will always go in browser fullscreen mode and in window fullscreen mode if supported (Safari on MacOS yet)
+
+#2010-11-07 - Release
+[1] BUG JS: fixed in fct.initializePlayer (onmousedown event) where parent.getAttribut("id") not a function; should work now
+[2] BUG CSS: when click a <embed>-button in fullscreen mode; now visibility:hidden; in fullscreen mode
+[3] ADD CSS: new tube.css in big style for bigger screens; buttons now 35x35px;
+
+#2010-11-06 - Release
+[1] ADD JS: option "hideControlsTimeout" to set timeout for hiding controls in seconds
+[2] CHANGE JS: option "useControls" to "useStandardControls" for better understanding
+[3] CHANGE JS: code clean up (fct.hideEl(), fct.showEl() only need element-id now, not element)
+[4] ADD JS: possibility for visitors to get a backlink or embedding-code
+
+#2010-11-05 - Release
+[1] CHANGE JS: put all fixes and changes in release version
+
+#2010-11-05 - Build 1
+[1] CHANGE JS: added fallback to standard player (QT) for all iOS devices
+[2] CHANGE JS: code clean up
+
+#2010-11-04 - Build 1
+[1] ADD JS: support for Android 2.2 (froyo), also reencoded the .mp4 file to work on Android- and iOS-devices
+[2] ADD CSS: a css-style for Big Play Button similar to the Play Button of Quicktime on iOS, for Poster-Bug release iOS 3.2
+
+#2010-11-03 - Build 3
+[1] BUG JS: when iOS 3.2 added a Big Play Button; because of Poster-Bug release iOS 3.2
+
+#2010-11-03 - Build 2
+[1] CHANGE JS: small changes in css styling when initializing
+[2] CHANGE CSS: in css themes (tube, modern, rounded) to meet [1]
+
+#2010-11-03 - Build 1
+[1] ADD JS: show controls until video is loaded so the user gets a loading response (loaded=1 in onProgress/onBuffering), not possible in Opera 10.x+ yet
+
+#2010-11-02 - Build 3
+[1] BUG JS: fixed with browser fullscreen on iPad where page<>browsersize
+
+#2010-11-02 - Build 2
+[1] BUG JS: fixed to play in iPhone and iPad
+
+#2010-11-02 - Build 1
+[1] ADD JS: possibility to set video to autoplay in video tag, remove the big play button and play (only first of all!!) videos
+[2] ADD JS: max. volume level set to 8, was 5
+[3] ADD JS: possibility to set loop attribute and loop playing video (not yet implemented in Firefox )
+
+#2010-11-01 - Build 3
+[1] ADD JS: new customizable variable to options to hide delayed or not hide new controls of video
+
+#2010-11-01 - Build 2
+[1] ADD JS: CRTL+f to set window fullscreen if supported (yet only if webkitSupportsFullscreen=true)
+[2] BUG JS: fixed with safari for mac where no data available with preload="none"
+
+#2010-11-01 - Build 1
+[1] ADD JS:  mouse doubleClick to video element to switch between small screen and window fullscreen mode
+[2] ADD JS:  big play button
+[3] CHANGE CSS: changed css-classes to be more independent from other page styles
+
+#2010-10-30 - Build 1
+[1] BUG JS:  should be fixed with iOS- and Mac-devices
+[2] REMOVE JS: spinner/wainting bar and big play button until iOS- and Mac- device bugs fixed
+
+#2010-10-29 - Build 4
+[1] BUG JS:  fixed with fct.getSubs() where "this.vars.subs" was "this.subs"
+
+#2010-10-29 - Build 3
+[1] CHANGE JS: call fct.setControlsTask (onmousemove in fct.setPoster(), fct.addControls()) only if video is focused
+
+#2010-10-29 - Build 2
+[1] ADD JS: spinner/waiting bar
+[2] ADD JS: big play button
+[3] BUG JS: fixed when TAB pressed and video in window fullscreen
+
+#2010-10-29 - Build 1
+[1] CHANGED JS: smaller changes with buffering and initializing
+
+#2010-10-28 - Build 1
+[1] CHANGE JS: reset keyboard interaction to firefox keyboard shortcuts; see: http://support.mozilla.com/en-US/kb/Keyboard%20shortcuts
+[2] BUG JS: fixed with window fullscreen/browser fullscreen mode
+[3] ADD JS: new customizable variable seekSkipPerc to options to seek backwards or forwards in percent
+[4] CHANGE JS: customizable variable seekSkip to seekSkipSec in options to seek backwards or forwards in seconds
+[5] ADD JS: support for MS IE9 beta by setting up video source to first payable source
+[6] ADD JS: support for Apple Safari with Quicktime-Plugin for HTML5 video element support
+[7] ADD JS: support for change of available subtitles
+[8] BUG JS: fixed while seeking
+[9] BUG JS: fixed with calling setPlaybackRate.fct
+[#] OPEN JS: problem in Internet Explorer 9 with subtitles of mimetype "application/ttaf+xml"
+
+#2010-10-27 - Build 3
+[1] change JS: remove focus from first first video because user could have set the focus to other elements
+
+#2010-10-27 - Build 2
+[1] BUG JS: fixed where "+","-" in Opera changes volume and size of elements on page, should only if no video element focused
+
+#2010-10-27 - Build 1
+[1] BUG JS: fixed with highlighting video elements when focused and tabbed [TAB-key] browsing through page to get videos in focus
+
+#2010-10-26 - Build 3
+[1] ADD JS: in progress with highlighting video elements when focused and tabbed [TAB-key] browsing through page to get videos in focus
+
+#2010-10-26 - Build 2
+[1] ADD JS: in progress with highlighting video elements when focused and tabbed [TAB-key] browsing through page to get videos in focus
+
+#2010-10-26 - Build 1
+[1] ADD JS: tabindex to tab in page
+[2] ADD JS: begin with highlighting video elements when focused and tabbed [TAB-key] browsing through page to get videos in focus
+
+#2010-10-25 - Release
+[1] CHANGE JS: all needed functions bundled in LBPlayer.fctName()
+
+#2010-10-23 - Build 1
+[1] ADD JS: switch between videos with "n" only if focused video not in fullscreen mode
+
+#2010-10-22 - Build 5
+[1] BUG JS: fixed fct.setScreen() calls and switch between small and fullscreen mode
+
+#2010-10-22 - Build 4
+[1] ADD JS: fct.setSubtitle() for more control and better code to show/hide subtitles
+[2] BUG JS: fixed fct.setPoster() and poster-behaviour
+[3] REMOVE JS: fct.isChildOf() because is no longer needed
+
+#2010-10-22 - Build 3
+[1] ADD JS: fct.checkVideoSources() to check if video is available and playable in browser
+[2] BUG JS: small fixes
+[3] CHANGE CSS: small fixes and changes in modern_tube theme
+
+#2010-10-22 - Build 2
+[1] BUG JS: small fixes
+
+#2010-10-22 - Build 1
+[1] BUG JS: fixed fct.setScreen()
+
+#2010-10-22 - Build 1
+[1] REMOVE JS: keyboard-control "up"/"down" to change volume because of page up/down navigation
+[2] ADD JS: keyboard-control "n" to switch between videos on page
+[3] CHANGE JS: keyboard-control "CRTL+Left"/"CRTL+Left" to seek forward/backward x sec. in video
+[4] CHANGE JS: parent-element of video doesn't need an id anymore
+
+#2010-10-21 - Build 5
+[1] BUG JS: mute-key ("m") out of function
+[2] ADD JS: begin functionality for "n"-key to get next video in focus, switch between videos on a page
+
+#2010-10-21 - Build 4
+[1] ADD JS: obj.fct.fixBuffering for browsers that used "autobuffer" instead of "preload" (Firefox, ??)
+
+#2010-10-21 - Build 3
+[1] ADD JS: option-var "posterRestore" (true|false) to reappear poster once video ended
+[2] ADD JS: obj.fct.onbuffering if video not supports progress-event (Opera, Google Chrome, ??)
+[3] BUG JS: fixed within opera where subtitle also show if video ended parseFloat(currentTime) >= parseFloat(duration)
+
+#2010-10-21 - Build 2
+[1] CHANGE JS: set focus to first video in fct.setup(), so you can control video-playback by keyboard after page was loaded
+[2] CHANGE CSS: set controls in styles (new,tube,rounded) 1px down to fit/match with video border
+
+#2010-10-21 - Build 1
+[1] ADD: first release of nightly
