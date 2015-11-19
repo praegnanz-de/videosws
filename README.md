@@ -38,20 +38,33 @@ You have to use placeholders for all content files. **Don’t use your own video
 
 ### Available placeholders
 
+- `{{player.directory}}` – URL to player folder (contains trailing slash)
 - `{{player.poster}}` – URL to video poster (JPG, PNG or other)
 - `{{player.video.mp4}}`– URL to video (MP4)
-- `{{player.video.ogg}}`– URL to video (OGG)
+- `{{player.video.ogv}}`– URL to video (OGG Video)
 - `{{player.video.webm}}`– URL to video (WebM)
 - `{{player.video.hls}}`– URL to video stream (HLS)
 - `{{player.video.dash}}`– URL to video stream (Dash)
-- `{{player.subtitles.srt}}`– URL to subtitles file (srt)
 - `{{player.chapters.srt}}`– URL to chapters file (srt)
+- `{{player.subtitles_en.srt}}`– URL to subtitles file (english, .srt format)
+- `{{player.subtitles_de.srt}}`– URL to subtitles file (german, .srt format)
+- `{{player.subtitles_it.srt}}`– URL to subtitles file (italian, .srt format)
+- `{{player.subtitles_en.sbv}}`– URL to subtitles file (english, .sbv format)
+- `{{player.subtitles_de.sbv}}`– URL to subtitles file (german, .sbv format)
+- `{{player.subtitles_it.sbv}}`– URL to subtitles file (italian, .sbv format)
+- `{{player.subtitles_en.sub}}`– URL to subtitles file (english, .sub format)
+- `{{player.subtitles_de.sub}}`– URL to subtitles file (german, .sub format)
+- `{{player.subtitles_it.sub}}`– URL to subtitles file (italian, .sub format)
+- `{{player.subtitles_en.vtt}}`– URL to subtitles file (english, .vtt format)
+- `{{player.subtitles_de.vtt}}`– URL to subtitles file (german, .vtt format)
+- `{{player.subtitles_it.vtt}}`– URL to subtitles file (italian, .vtt format)
+
 
 ---------
 
 ## Your `playerinfo.json` file
 
-**Please note:** All URLs are required to start with either `http://` or `https://`. Also, we’ll do a HEAD request to check whether your site returns the required `200 OK` status. We only do this to detect offline or moved sites.
+**Please note:** All external URLs are required to start with either `http://` or `https://`. Also, we’ll do a HEAD request to check whether your site returns the required `200 OK` status. We only do this to detect offline or moved sites.
 
 ---------
 
@@ -115,6 +128,10 @@ URL for your source code repository (example: `https://github.com/praegnanz.de/a
 #### `deprecated` (boolean)
 Set this to true, to mark player as deprecated.
 
+---------
+
+### HTML/CSS/JS document parameters (all optional)
+
 #### `example.html` (string)
 Name of your example HTML, defaults to `index.html`.
 
@@ -126,6 +143,11 @@ We'll add a &lt;script&gt; element in our &lt;head&gt; for every local JS file (
 
 #### `example.jsFoot` (string|string[])
 We'll add a &lt;script&gt; element before &lt;/body&gt; for every local JS file (or URL) you defined here.
+
+
+---------
+
+### Flag parameters (all optional)
 
 #### `flags.flash` (boolean)
 True, if your player provides a flash version.
@@ -215,31 +237,32 @@ True, if player supports Dynamic Adaptive Streaming over HTTP.
     "freeAvailable": true
   },
 
+  "library": "jquery",
+  "hosted": false,
+
   "example": {
     "css": ["css/ponybase.css", "css/ponytheme_a.css"],
-    "jsHead": ["jquery-1.9.1.min.js", "pony-script.min.js"]
+    "jsHead": ["libs/jquery-1.9.1.min.js", "pony-script.min.js"]
   },
 
   "flags": {
-    "library": "jquery",
     "flash": true,
-    "api": true,
+    "services": ["youtube"],
     "unifiedLook": true,
+    "api": true,
     "unifiedAPI": true,
+    "responsive": false,
+    "skinnable": true,
+    "embeddable": false,
+    "audioOnly": true,
+    "cms": ["wordpress"],
     "fullscreen": true,
     "keyboard": false,
+    "aria": false,
     "subtitles": true,
     "playlists": true,
-    "responsive": false,
-    "embeddable": false,
-    "cms": ["wordpress"],
-    "services": ["youtube"],
-    "skinnable": true,
-    "audioOnly": true,
     "speedControl": false,
     "qualityControl": true,
-    "hosted": false,
-    "aria": false,
     "hls": false,
     "dash": false
   }
