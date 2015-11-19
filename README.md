@@ -52,18 +52,18 @@ You have to use placeholders for all content files. **Don’t use your own video
 - `{{player.video.hls}}`– URL to video stream (HLS)
 - `{{player.video.dash}}`– URL to video stream (Dash)
 - `{{player.chapters.srt}}`– URL to chapters file (srt)
-- `{{player.subtitles_en.srt}}`– URL to subtitles file (english, .srt format)
-- `{{player.subtitles_de.srt}}`– URL to subtitles file (german, .srt format)
-- `{{player.subtitles_it.srt}}`– URL to subtitles file (italian, .srt format)
-- `{{player.subtitles_en.sbv}}`– URL to subtitles file (english, .sbv format)
-- `{{player.subtitles_de.sbv}}`– URL to subtitles file (german, .sbv format)
-- `{{player.subtitles_it.sbv}}`– URL to subtitles file (italian, .sbv format)
-- `{{player.subtitles_en.sub}}`– URL to subtitles file (english, .sub format)
-- `{{player.subtitles_de.sub}}`– URL to subtitles file (german, .sub format)
-- `{{player.subtitles_it.sub}}`– URL to subtitles file (italian, .sub format)
-- `{{player.subtitles_en.vtt}}`– URL to subtitles file (english, .vtt format)
-- `{{player.subtitles_de.vtt}}`– URL to subtitles file (german, .vtt format)
-- `{{player.subtitles_it.vtt}}`– URL to subtitles file (italian, .vtt format)
+- `{{player.subtitles.en.srt}}`– URL to subtitles file (english, .srt format)
+- `{{player.subtitles.de.srt}}`– URL to subtitles file (german, .srt format)
+- `{{player.subtitles.it.srt}}`– URL to subtitles file (italian, .srt format)
+- `{{player.subtitles.en.sbv}}`– URL to subtitles file (english, .sbv format)
+- `{{player.subtitles.de.sbv}}`– URL to subtitles file (german, .sbv format)
+- `{{player.subtitles.it.sbv}}`– URL to subtitles file (italian, .sbv format)
+- `{{player.subtitles.en.sub}}`– URL to subtitles file (english, .sub format)
+- `{{player.subtitles.de.sub}}`– URL to subtitles file (german, .sub format)
+- `{{player.subtitles.it.sub}}`– URL to subtitles file (italian, .sub format)
+- `{{player.subtitles.en.vtt}}`– URL to subtitles file (english, .vtt format)
+- `{{player.subtitles.de.vtt}}`– URL to subtitles file (german, .vtt format)
+- `{{player.subtitles.it.vtt}}`– URL to subtitles file (italian, .vtt format)
 
 
 ---------
@@ -149,6 +149,11 @@ We’ll add a &lt;script&gt; element in our &lt;head&gt; for every local JS file
 
 #### `example.jsFoot` (string|string[])
 We’ll add a &lt;script&gt; element before &lt;/body&gt; for every local JS file (or URL) you defined here.
+
+
+---------
+
+### Flag parameters (all optional)
 
 
 ---------
@@ -253,7 +258,11 @@ True, if player supports Dynamic Adaptive Streaming over HTTP.
 
   "flags": {
     "flash": true,
+<<<<<<< 0fedf76f1b1d43eccdf86a4b57ab920480ddbd84
     "services": "youtube",
+=======
+    "services": ["youtube"],
+>>>>>>> Readme Update
     "unifiedLook": true,
     "api": true,
     "unifiedAPI": true,
@@ -261,7 +270,11 @@ True, if player supports Dynamic Adaptive Streaming over HTTP.
     "skinnable": true,
     "embeddable": false,
     "audioOnly": true,
+<<<<<<< 0fedf76f1b1d43eccdf86a4b57ab920480ddbd84
     "cms": ["wordpress", "joomla"],
+=======
+    "cms": ["wordpress"],
+>>>>>>> Readme Update
     "fullscreen": true,
     "keyboard": false,
     "aria": false,
