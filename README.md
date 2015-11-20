@@ -45,7 +45,15 @@ You have to use placeholders for all content files. **Don’t use your own video
 - `{{player.video.webm}}`– URL to video (WebM)
 - `{{player.video.hls}}`– URL to video stream (HLS)
 - `{{player.video.dash}}`– URL to video stream (Dash)
-- `{{player.subtitles.srt}}`– URL to subtitles file (srt)
+- `{{player.subtitles.en.srt}}`– URL to subtitles file (english, srt)
+- `{{player.subtitles.en.sbv}}`– URL to subtitles file (english, sbv)
+- `{{player.subtitles.en.vtt}}`– URL to subtitles file (english, vtt)
+- `{{player.subtitles.de.srt}}`– URL to subtitles file (german, srt)
+- `{{player.subtitles.de.sbv}}`– URL to subtitles file (german, sbv)
+- `{{player.subtitles.de.vtt}}`– URL to subtitles file (german, vtt)
+- `{{player.subtitles.it.srt}}`– URL to subtitles file (italian, srt)
+- `{{player.subtitles.it.sbv}}`– URL to subtitles file (italian, sbv)
+- `{{player.subtitles.it.vtt}}`– URL to subtitles file (italian, vtt)
 - `{{player.chapters.srt}}`– URL to chapters file (srt)
 
 ---------
