@@ -3,6 +3,7 @@
   "version": "0.8.0.93",
   "url": "http://www.leanbackplayer.com",
   "description": "A main feature of LeanBack Player in desktop browsers is to be controlled almost completely by keyboard. The controls are similar to keyboard shortcuts known from widely-used desktop media players.",
+  "repository": "http://github.com/johndyer/mediaelement/",
   "license": "gnugpl",
   "pricing": {
     "once": true,
