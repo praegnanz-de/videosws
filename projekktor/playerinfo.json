@@ -10,6 +10,8 @@
     "subscription": false,
     "freeAvailable": true
   },
+  "library": "jquery",
+  "hosted": false,
 
   "example": {
     "css": ["themes/maccaco/projekktor.style.css"],
@@ -17,7 +19,6 @@
   },
 
   "flags": {
-    "library": "jquery",
     "flash": true,
     "api": true,
     "unifiedLook": true,
@@ -34,7 +35,6 @@
     "audioOnly": true,
     "speedControl": false,
     "qualityControl": true,
-    "hosted": false,
     "aria": false,
     "hls": true,
     "dash": false
