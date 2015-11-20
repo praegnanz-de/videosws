@@ -1,0 +1,23 @@
+<script>
+  LBP.options = {
+    // your options here (see list of options below)
+  }
+</script>
+
+<div class="leanback-player-video">
+    <video width="640" height="360" poster="{{player.poster}}"  preload="metadata" controls>
+        <source src="{{player.video.mp4}}" type="video/mp4" />                
+        <source src="{{player.video.webm}}" type="video/webm" />                    
+
+        <track enabled="true" kind="subtitles" label="Deutsch" srclang="de" type="text/plain" src="{{player.subtitles_de.sbv}}"></track>
+        <track enabled="true" kind="subtitles" label="English" srclang="en" type="text/plain" src="{{player.subtitles_en.sbv}}"></track>
+
+        <object name="html5_video_fallback" class="leanback-player-flash-fallback" id="html5_video_fallback" width="640" height="360" type="application/x-shockwave-flash" data="{{player.directory}}player.swf">
+            <param name="movie" value="{{player.directory}}player.swf" />
+            <param name="allowfullscreen" value="true" />
+            <param name="allowscriptaccess" value="always" />
+            <param name="flashvars" value="autostart=no&controlbar=over&image={{player.poster}}&file={{player.video.mp4}}" />
+            <img src="{{player.poster}}" width="640" height="360" alt="Testvideo"/>
+        </object>
+    </video>
+</div>
