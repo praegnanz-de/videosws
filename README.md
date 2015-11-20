@@ -38,6 +38,7 @@ You have to use placeholders for all content files. **Don’t use your own video
 
 ### Available placeholders
 
+- `{{player.directory}}` – Absolute URL to your player directory
 - `{{player.poster}}` – URL to video poster (JPG, PNG or other)
 - `{{player.video.mp4}}`– URL to video (MP4)
 - `{{player.video.ogv}}`– URL to video (OGV)
