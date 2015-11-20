@@ -22,16 +22,22 @@ Dear video player maker! You can help us keeping this comparison up to date. Jus
 
 ## Your `index.html` file
 
-Contains only the core HTML code for your player. Might contain the `video`-Element, but some players only use a wrapper-DIV and do the rest via JS. Here’s a common example:
+Contains only the core HTML code for your player. Might contain the `video`-Element, but some players only use a wrapper-DIV and do the rest via JS. Here’s a typical example:
 
 ```html
-<div class="optional_playerwrapper">
+<div class="ponyplayer_wrapper">
 	<video id="my_player" poster="{{player.poster}}" controls="controls" preload="none">
 	    <source type="video/mp4" src="{{player.video.mp4}}" />
 	    <source type="video/webm" src="{{player.video.webm}}" />
 	    <track kind="subtitles" src="{{player.subtitles.srt}}" srclang="en" />
 	</video>
 </div>
+
+<script>
+  $(function(){
+    $('.ponyplayer_wrapper > video').ponyplayerinit({ awesome: true });
+  });
+</script>
 ```
 
 You have to use placeholders for all content files. **Don’t use your own video!**
@@ -89,10 +95,10 @@ true, if one-time fee required to use player.
 true, if paid subscription is required to use player.
 
 #### `pricing.freeAvailable` (boolean)
-true, if there's also a free version available. Only required if `pricing.once == true` or `pricing.subscription == true`.
+true, if there’s also a free version available. Only required if `pricing.once == true` or `pricing.subscription == true`.
 
 #### `license` (string)
-Your player's license. You can use one of the licenses below or a URL to enter custom licenses. Create a github issue to add other liceses which are not written by yourself.
+Your player’s license. You can use one of the licenses below or a URL to enter custom licenses. Create a github issue to add other liceses which are not written by yourself.
 
 - apache
 - bsd2
@@ -105,7 +111,7 @@ Your player's license. You can use one of the licenses below or a URL to enter c
 - mpl
 
 #### `library` (string|string[])
-Library / libraries your player needs to run. Available libraries are below. Create an issue to add other libraries.
+Library / libraries your player needs to run. If your player doesn’t require any libraries, place an empty array: `[]` Create an issue to add other libraries. Available libraries are below.
 
 - jquery
 - mootools
@@ -114,9 +120,9 @@ Library / libraries your player needs to run. Available libraries are below. Cre
 #### `hosted` (boolean|string)
 One of the following values:
 
-- __true__: it's not allowed/possible to host the player by yourself, you have to use the CDN provided
-- __"possible"__: it's allowed to host the player by yourself or use the CDN provided
-- __false__: there's no offical CDN, you have to host the player by yourself
+- __true__: it’s not allowed/possible to host the player by yourself, you have to use the CDN provided
+- __"possible"__: it’s allowed to host the player by yourself or use the CDN provided
+- __false__: there’s no offical CDN, you have to host the player by yourself
 
 ---------
 
@@ -136,13 +142,13 @@ Set this to true, to mark player as deprecated.
 Name of your example HTML, defaults to `index.html`.
 
 #### `example.css` (string|string[])
-We'll add a &lt;link&gt; element in our &lt;head&gt; for every local CSS file (or URL) you defined here.
+We’ll add a &lt;link&gt; element in our &lt;head&gt; for every local CSS file (or URL) you defined here.
 
 #### `example.jsHead` (string|string[])
-We'll add a &lt;script&gt; element in our &lt;head&gt; for every local JS file (or URL) you defined here.
+We’ll add a &lt;script&gt; element in our &lt;head&gt; for every local JS file (or URL) you defined here.
 
 #### `example.jsFoot` (string|string[])
-We'll add a &lt;script&gt; element before &lt;/body&gt; for every local JS file (or URL) you defined here.
+We’ll add a &lt;script&gt; element before &lt;/body&gt; for every local JS file (or URL) you defined here.
 
 
 ---------
@@ -159,7 +165,7 @@ True, if your player provides an API.
 True, if your player provides an API, wich works for both &lt;video&gt; and the flash fallback.
 
 #### `flags.unifiedLook` (boolean)
-True, if your player's flash fallback and the native video player looks the same.
+True, if your player’s flash fallback and the native video player looks the same.
 
 #### `flags.fullscreen` (boolean)
 True, if your player has native fullscreen support.
@@ -247,7 +253,7 @@ True, if player supports Dynamic Adaptive Streaming over HTTP.
 
   "flags": {
     "flash": true,
-    "services": ["youtube"],
+    "services": "youtube",
     "unifiedLook": true,
     "api": true,
     "unifiedAPI": true,
@@ -255,7 +261,7 @@ True, if player supports Dynamic Adaptive Streaming over HTTP.
     "skinnable": true,
     "embeddable": false,
     "audioOnly": true,
-    "cms": ["wordpress"],
+    "cms": ["wordpress", "joomla"],
     "fullscreen": true,
     "keyboard": false,
     "aria": false,
