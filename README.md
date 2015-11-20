@@ -40,7 +40,7 @@ You have to use placeholders for all content files. **Don’t use your own video
 
 - `{{player.poster}}` – URL to video poster (JPG, PNG or other)
 - `{{player.video.mp4}}`– URL to video (MP4)
-- `{{player.video.ogg}}`– URL to video (OGG)
+- `{{player.video.ogv}}`– URL to video (OGV)
 - `{{player.video.webm}}`– URL to video (WebM)
 - `{{player.video.hls}}`– URL to video stream (HLS)
 - `{{player.video.dash}}`– URL to video stream (Dash)
