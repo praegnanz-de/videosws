@@ -7,7 +7,8 @@
 <div class="leanback-player-video">
     <video width="640" height="360" poster="{{player.poster}}"  preload="metadata" controls>
         <source src="{{player.video.mp4}}" type="video/mp4" />                
-        <source src="{{player.video.webm}}" type="video/webm" />                    
+        <source src="{{player.video.webm}}" type="video/webm" />              
+        <source src="{{player.video.ogv}}" type="video/ogg" />                      
 
         <track enabled="true" kind="subtitles" label="Deutsch" srclang="de" type="text/plain" src="{{player.subtitles_de.sbv}}"></track>
         <track enabled="true" kind="subtitles" label="English" srclang="en" type="text/plain" src="{{player.subtitles_en.sbv}}"></track>
