@@ -1,4 +1,4 @@
-<video width="320" height="240" poster="poster.jpg" controls="controls" preload="none">
+<video id="demo" width="640" height="360" poster="{{player.poster}}" controls="controls" preload="none">
     <!-- MP4 for Safari, IE9, iPhone, iPad, Android, and Windows Phone 7 -->
     <source type="video/mp4" src="{{player.video.mp4}}" />
     <!-- WebM/VP8 for Firefox4, Opera, and Chrome -->
@@ -6,7 +6,7 @@
     <!-- Ogg/Vorbis for older Firefox and Opera versions -->
     <source type="video/ogg" src="{{player.video.ogv}}" />
     <!-- Optional: Add subtitles for each language -->
-    <track kind="subtitles" src="{{player.subtitles.srt}}" srclang="en" />
+    <track kind="subtitles" src="{{player.subtitles_en.srt}}" srclang="en" />
     <!-- Optional: Add chapters -->
     <track kind="chapters" src="{{player.chapters.srt}}" srclang="en" />
     <!-- Flash fallback for non-HTML5 browsers without JavaScript -->
@@ -14,6 +14,12 @@
         <param name="movie" value="flashmediaelement.swf" />
         <param name="flashvars" value="controls=true&file={{player.video.mp4}}" />
         <!-- Image as a last resort -->
-        <img src="{{player.poster}}" width="320" height="240" title="No video playback capabilities" />
+        <img src="{{player.poster}}" width="640" height="360" title="No video playback capabilities" />
     </object>
 </video>
+
+<script>
+$(function(){
+    $('#demo').mediaelementplayer();    
+});
+</script>
