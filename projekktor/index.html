@@ -1,17 +1,19 @@
 <div id="player_a" class="projekktor"></div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
+<script>
+    $(function() {
         projekktor('#player_a', {
             poster: '{{player.poster}}',
             title: 'this is projekktor',
+            width: 640,
+            height: 360,
             playerFlashMP4: 'swf/StrobeMediaPlayback/StrobeMediaPlayback.swf',
             playerFlashMP3: 'swf/StrobeMediaPlayback/StrobeMediaPlayback.swf',
             playlist: [
                 {
-                    0: {src: "{{player.video.ogv}}", type: "video/ogv"},
-                    1: {src: "{{player.video.mp4}}", type: "video/mp4"},
-                    2: {src: "{{player.video.webm}}", type: "video/webm"}
+                    0: {src: "{{player.video.mp4}}", type: "video/mp4"},
+                    1: {src: "{{player.video.webm}}", type: "video/webm"},
+                    2: {src: "{{player.video.ogv}}", type: "video/ogv"}
                 }
             ]
         }, function(player) {});
