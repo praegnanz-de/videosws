@@ -27,6 +27,7 @@
     "fullscreen": true,
     "keyboard": true,
     "subtitles": true,
+    "chapters": true,
     "playlists": false,
     "responsive": false,
     "embeddable": false,
