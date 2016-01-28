@@ -179,6 +179,9 @@ True, if your player is accessable via keyboard.
 #### `flags.subtitles` (boolean)
 True, if your player has subtitles support.
 
+#### `flags.chapters` (boolean)
+True, if your player has chapter support.
+
 #### `flags.playlists` (boolean)
 True, if your player supports playlists.
 
@@ -269,6 +272,7 @@ True, if player supports Dynamic Adaptive Streaming over HTTP.
     "keyboard": false,
     "aria": false,
     "subtitles": true,
+    "chapters": false,
     "playlists": true,
     "speedControl": false,
     "qualityControl": true,
