@@ -26,6 +26,7 @@
     "fullscreen": true,
     "keyboard": false,
     "subtitles": true,
+    "chapters": false,
     "playlists": true,
     "responsive": false,
     "embeddable": false,
@@ -36,7 +37,7 @@
     "speedControl": false,
     "qualityControl": true,
     "aria": false,
-    "hls": true,
+    "hls": false,
     "dash": false
   }
 }
