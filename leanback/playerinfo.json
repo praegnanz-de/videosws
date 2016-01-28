@@ -15,7 +15,7 @@
 
   "example": {
     "css": ["css.player/leanbackPlayer.default.css"],
-    "jsFoot": [
+    "jsHead": [
       "js.player/leanbackPlayer.pack.js", 
       "js.player/leanbackPlayer.en.js", 
       "js.player/leanbackPlayer.de.js"]
@@ -29,6 +29,7 @@
     "fullscreen": true,
     "keyboard": true,
     "subtitles": true,
+    "chapters": true,
     "playlists": true,
     "responsive": false,
     "embeddable": false,

@@ -50,19 +50,22 @@ You have to use placeholders for all content files. **Don’t use your own video
 - `{{player.video.webm}}`– URL to video (WebM)
 - `{{player.video.hls}}`– URL to video stream (HLS)
 - `{{player.video.dash}}`– URL to video stream (Dash)
-- `{{player.chapters.srt}}`– URL to chapters file (srt)
+- `{{player.chapters_en.srt}}`– URL to chapters file (english, .srt format)
+- `{{player.chapters_de.srt}}`– URL to chapters file (german, .srt format)
+- `{{player.chapters_en.sbv}}`– URL to chapters file (english, .sbv format)
+- `{{player.chapters_de.sbv}}`– URL to chapters file (german, .sbv format)
+- `{{player.chapters_en.sub}}`– URL to chapters file (english, .sub format)
+- `{{player.chapters_de.sub}}`– URL to chapters file (german, .sub format)
+- `{{player.chapters_en.vtt}}`– URL to chapters file (english, .vtt format)
+- `{{player.chapters_de.vtt}}`– URL to chapters file (german, .vtt format)
 - `{{player.subtitles_en.srt}}`– URL to subtitles file (english, .srt format)
 - `{{player.subtitles_de.srt}}`– URL to subtitles file (german, .srt format)
-- `{{player.subtitles_it.srt}}`– URL to subtitles file (italian, .srt format)
 - `{{player.subtitles_en.sbv}}`– URL to subtitles file (english, .sbv format)
 - `{{player.subtitles_de.sbv}}`– URL to subtitles file (german, .sbv format)
-- `{{player.subtitles_it.sbv}}`– URL to subtitles file (italian, .sbv format)
 - `{{player.subtitles_en.sub}}`– URL to subtitles file (english, .sub format)
 - `{{player.subtitles_de.sub}}`– URL to subtitles file (german, .sub format)
-- `{{player.subtitles_it.sub}}`– URL to subtitles file (italian, .sub format)
 - `{{player.subtitles_en.vtt}}`– URL to subtitles file (english, .vtt format)
 - `{{player.subtitles_de.vtt}}`– URL to subtitles file (german, .vtt format)
-- `{{player.subtitles_it.vtt}}`– URL to subtitles file (italian, .vtt format)
 
 
 ---------
@@ -141,14 +144,15 @@ Set this to true, to mark player as deprecated.
 Name of your example HTML, defaults to `index.html`.
 
 #### `example.css` (string|string[])
-We’ll add a &lt;link&gt; element in our &lt;head&gt; for every local CSS file (or URL) you defined here.
+We’ll add a &lt;link&gt; element in our &lt;head&gt; for every local CSS file (or URL*) you defined here.
 
 #### `example.jsHead` (string|string[])
-We’ll add a &lt;script&gt; element in our &lt;head&gt; for every local JS file (or URL) you defined here.
+We’ll add a &lt;script&gt; element in our &lt;head&gt; for every local JS file (or URL*) you defined here. 
 
 #### `example.jsFoot` (string|string[])
-We’ll add a &lt;script&gt; element before &lt;/body&gt; for every local JS file (or URL) you defined here.
+We’ll add a &lt;script&gt; element before &lt;/body&gt; for every local JS file (or URL*) you defined here.
 
+* external URLs start either with `http://` or `https://`. Do not start with `//`! 
 
 ---------
 
@@ -174,6 +178,9 @@ True, if your player is accessable via keyboard.
 
 #### `flags.subtitles` (boolean)
 True, if your player has subtitles support.
+
+#### `flags.chapters` (boolean)
+True, if your player has chapter support.
 
 #### `flags.playlists` (boolean)
 True, if your player supports playlists.
@@ -265,6 +272,7 @@ True, if player supports Dynamic Adaptive Streaming over HTTP.
     "keyboard": false,
     "aria": false,
     "subtitles": true,
+    "chapters": false,
     "playlists": true,
     "speedControl": false,
     "qualityControl": true,

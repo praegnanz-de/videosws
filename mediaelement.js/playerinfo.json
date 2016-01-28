@@ -1,6 +1,6 @@
 {
   "name": "mediaelement.js",
-  "version": "2.18.2",
+  "version": "2.19.0",
   "url": "http://mediaelementjs.com/",
   "description": "Our personal favourite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API.",
   "repository": "http://github.com/johndyer/mediaelement/",
@@ -15,7 +15,8 @@
 
   "example": {
     "css": ["mediaelementplayer.css"],
-    "jsFoot": ["jquery.js", "mediaelement-and-player.min.js"]
+    "jsHead": ["jquery.js"],
+    "jsFoot": ["mediaelement-and-player.min.js"]
   },
 
   "flags": {
@@ -26,6 +27,7 @@
     "fullscreen": true,
     "keyboard": true,
     "subtitles": true,
+    "chapters": true,
     "playlists": false,
     "responsive": false,
     "embeddable": false,

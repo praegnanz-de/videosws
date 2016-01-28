@@ -1,19 +1,16 @@
-<div id="player_a" class="projekktor"></div>
+<video id="player_a" class="projekktor" poster="{{player.poster}}" title="this is projekktor" width="640" height="360" controls>
+    <source src="{{player.video.mp4}}" type="video/mp4" />
+    <source src="{{player.video.webm}}" type="video/webm" />
+    <source src="{{player.video.ogv}}" type="video/ogv" />
+</video>
+
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        projekktor('#player_a', {
-            poster: '{{player.poster}}',
-            title: 'this is projekktor',
-            playerFlashMP4: 'swf/StrobeMediaPlayback/StrobeMediaPlayback.swf',
-            playerFlashMP3: 'swf/StrobeMediaPlayback/StrobeMediaPlayback.swf',
-            playlist: [
-                {
-                    0: {src: "{{player.video.ogg}}", type: "video/ogg"},
-                    1: {src: "{{player.video.mp4}}", type: "video/mp4"},
-                    2: {src: "{{player.video.webm}}", type: "video/webm"}
-                }
-            ]
-        }, function(player) {});
+$(document).ready(function() {
+    projekktor('#player_a', {
+    volume: 0.8,
+    playerFlashMP4: 'swf/StrobeMediaPlayback/StrobeMediaPlayback.swf',
+    playerFlashMP3: 'swf/StrobeMediaPlayback/StrobeMediaPlayback.swf'
     });
-</script>
+});
+</script> 
