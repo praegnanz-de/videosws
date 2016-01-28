@@ -1,0 +1,51 @@
+{
+  "name": "Able Player",
+  "version": "2.3.0",
+  "url": "http://ableplayer.github.io/ableplayer/",
+  "description": "Able Player is a fully accessible cross-browser media player. It uses the HTML5 <audio> or <video> element for browsers that support them, and (optionally) the JW Player as a fallback for those that don’t.",
+  "repository": "https://github.com/ableplayer/ableplayer",
+  "license": "mit",
+  "pricing": {
+    "once": false,
+    "subscription": false,
+    "freeAvailable": true
+  },
+  "library": ["jquery"],
+  "hosted": false,
+
+  "example": {
+    "css": [
+      "styles/ableplayer.css",
+      "styles/ableplayer-transcript.css"
+    ],
+    "jsHead": [
+      "thirdparty/modernizr.custom.js", 
+      "https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js", 
+      "thirdparty/js.cookie.js",
+      "build/ableplayer.min.js"
+    ]
+  },
+
+  "flags": {
+    "flash": true,
+    "api": false,
+    "unifiedLook": true,
+    "unifiedAPI": false,
+    "fullscreen": true,
+    "keyboard": true,
+    "aria": true,
+    "subtitles": true,
+    "chapters": true,
+    "playlists": true,
+    "responsive": false,
+    "embeddable": false,
+    "services": ["youtube"],
+    "cms": [],
+    "skinnable": true,
+    "audioOnly": true,
+    "speedControl": true,
+    "qualityControl": false,
+    "hls": false,
+    "dash": false
+  }
+}
