@@ -1,0 +1,16 @@
+<video id="videojs_player" class="video-js vjs-16-9 vjs-default-skin"
+       controls preload="auto"
+       poster="{{player.poster}}"
+       data-viblast-key="34ndf207DNDdhZqZhNGI5NWU5ZTI=">
+  <!-- this is an important to specify the type of the video. Use 'application/x-mpegURL' for HLS streams or 'application/dash+xml' for DASH streams -->
+  <source src="{{player.video.hls}}" type='application/x-mpegURL' />
+  <track kind="subtitles" src="{{player.subtitles_en.vtt}}" srclang="en">
+  <track kind="subtitles" src="{{player.subtitles_de.vtt}}" srclang="de">
+  <track kind="chapters" src="{{player.chapters_en.vtt}}" srclang="en">
+  <track kind="chapters" src="{{player.chapters_de.vtt}}" srclang="de">
+  <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>
+
+<script>
+  videojs('#videojs_player', {}, function() { });
+</script>
