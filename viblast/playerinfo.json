@@ -3,7 +3,7 @@
   "version": "6",
   "url": "http://viblast.com/player/",
   "description": "Video playback of HLS and MPEG-DASH streams for HTML5 & mobile. P2P capable.",
-  "license": "commercial",
+  "license": "https://portal.viblast.com/portal/terms-of-service/",
   "pricing": {
     "once": false,
     "subscription": true,
