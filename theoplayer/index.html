@@ -1,0 +1,8 @@
+<video controls preload="auto" poster="{{player.poster}}" style="width: 100%">
+    <source src="{{player.video.hls}}" type="application/x-mpegURL" />
+    <source src="{{player.video.mp4}}" type="video/mp4" />
+    <track kind="subtitles" src="{{player.subtitles_en.vtt}}" srclang="en" label="English" />
+    <track kind="subtitles" src="{{player.subtitles_de.vtt}}" srclang="de" label="Deutsch" />
+    <track kind="chapters" src="{{player.chapters_en.vtt}}" srclang="en" />
+    <track kind="chapters" src="{{player.chapters_de.vtt}}" srclang="de" />
+</video>
