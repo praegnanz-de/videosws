@@ -1,0 +1,41 @@
+{
+  "name": "THEOplayer",
+  "version": "1.6.20",
+  "url": "https://www.theoplayer.com/",
+  "description": "THEOplayer offers support for adaptive streaming of HLS and MPEG-DASH on all platforms and devices. This allows you to use a single streaming protocol to reach all of your viewers. It simplifies your online streaming processes and reduces your costs. Say goodbye to plugins forever because with THEOplayer, there is no need for your viewers to install plugins such as Flash, Silverlight or QuickTime. This video player comes with a rich feature set such as advertisements and subtitles, is completely customizable and is already trusted by hundreds of companies. Visit the website to request a free trial to test THEOplayer yourself. THEOplayer is developed by OpenTelly, a fast-growing company from Belgium specialized in the development of HTML5-based streaming video playback solutions.",
+  "pricing": {
+    "once": false,
+    "subscription": true,
+    "freeAvailable": false
+  },
+  "license": "https://www.theoplayer.com/licensing",
+  "library": [],
+  "hosted": "possible",
+
+  "example": {
+    "jsFoot": "https://cdn.theoplayer.com/latest/be571103-b0c2-4840-86a4-ed581824ca37/theoplayer.loader.js"
+  },
+
+  "flags": {
+    "flash": false,
+    "api": true,
+    "unifiedAPI": true,
+    "unifiedLook": true,
+    "fullscreen": true,
+    "keyboard": true,
+    "subtitles": true,
+    "chapters": true,
+    "playlists": true,
+    "responsive": true,
+    "embeddable": false,
+    "cms": [],
+    "services": [],
+    "skinnable": true,
+    "audioOnly": true,
+    "speedControl": true,
+    "qualityControl": true,
+    "aria": false,
+    "hls": true,
+    "dash": true
+  }
+}
