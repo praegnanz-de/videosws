@@ -1,0 +1,14 @@
+<figure id="ozplayer-1-container" class="ozplayer-container">
+  <div data-responsive="ozplayer-1-container" data-controls="stack" class="ozplayer" id="ozplayer-1" data-transcript="ozplayer-1-transcript" >
+    <video  poster="{{player.poster}}"  width="640" height="360" controls="controls" preload="none">
+      <source src="{{player.video.mp4}}" type="video/mp4"></source>
+      <source src="{{player.video.webm}}" type="video/webm"></video>
+      <track src="{{player.subtitles_en.vtt}}" kind="captions" srclang="en" default="default" ></track>
+      <div class="ozplayer-fallback"><ul><li><a href="{{player.video.mp4}}">Video for playback</a></li></ul></div>
+    </video>
+  </div>
+  <details class="ozplayer-expander" open="open">
+    <summary>Video Transcript</summary>
+      <div id="ozplayer-1-transcript" class="ozplayer-transcript"></div>
+  </details>
+</figure>

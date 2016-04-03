@@ -1,0 +1,55 @@
+{
+   "url" : "http://www.accessibilityoz.com/ozplayer/",
+   "license" : "http://www.accessibilityoz.com/ozplayer/",
+   "version" : "2.0",
+   "example" : {
+      "jsFoot" : [
+         "https://ozplayer.global.ssl.fastly.net/2.0/ozplayer-core/ozplayer.free.js",
+         "https://ozplayer.global.ssl.fastly.net/2.0/ozplayer-lang/en.js",
+         "https://ozplayer.global.ssl.fastly.net/2.0/config.js"
+      ],
+      "css" : [
+         "https://ozplayer.global.ssl.fastly.net/2.0/ozplayer-core/ozplayer.min.css",
+         "https://ozplayer.global.ssl.fastly.net/2.0/ozplayer-skin/highlights-blue.css",
+         "https://ozplayer.global.ssl.fastly.net/2.0/transcript.css"
+      ],
+      "jsHead" : [
+         "https://ozplayer.global.ssl.fastly.net/2.0/ozplayer-core/mediaelement.min.js"
+      ]
+   },
+   "name" : "OzPlayer",
+   "description" : "Fully accessible video player, includes audio descriptions",
+   "pricing" : {
+      "once" : false,
+      "freeAvailable" : true,
+      "subscription" : true
+   },
+   "hosted" : "possible",
+   "flags" : {
+      "api" : false,
+      "skinnable" : true,
+      "hls" : false,
+      "services" : [
+         "youtube",
+         "vimeo"
+      ],
+      "dash" : false,
+      "cms" : [
+         "wordpress"
+      ],
+      "responsive" : true,
+      "fullscreen" : true,
+      "qualityControl" : false,
+      "keyboard" : true,
+      "unifiedLook" : true,
+      "chapters" : false,
+      "subtitles" : true,
+      "flash" : true,
+      "audioOnly" : false,
+      "unifiedAPI" : false,
+      "speedControl" : false,
+      "aria" : true,
+      "playlists" : false,
+      "embeddable" : false
+   }
+}
