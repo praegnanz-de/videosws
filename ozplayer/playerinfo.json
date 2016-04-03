@@ -2,6 +2,7 @@
    "url" : "http://www.accessibilityoz.com/ozplayer/",
    "license" : "http://www.accessibilityoz.com/ozplayer/",
    "version" : "2.0",
+   "library": [],
    "example" : {
       "jsFoot" : [
          "https://ozplayer.global.ssl.fastly.net/2.0/ozplayer-core/ozplayer.free.js",
