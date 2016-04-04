@@ -1,6 +1,6 @@
 {
   "name": "mediaelement.js",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "url": "http://mediaelementjs.com/",
   "description": "Our personal favourite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API.",
   "repository": "http://github.com/johndyer/mediaelement/",
@@ -28,7 +28,7 @@
     "subtitles": true,
     "chapters": true,
     "playlists": false,
-    "responsive": false,
+    "responsive": true,
     "embeddable": false,
     "cms": ["wordpress", "drupal", "joomla", "typo3"],
     "services": ["youtube"],
@@ -37,7 +37,7 @@
     "speedControl": false,
     "qualityControl": false,
     "aria": false,
-    "hls": false,
+    "hls": true,
     "dash": false
   }
 }
