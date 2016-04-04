@@ -19,7 +19,7 @@
       ]
    },
    "name" : "OzPlayer",
-   "description" : "Fully accessible video player, includes audio descriptions",
+   "description" : "OzPlayer is a fully accessible HTML5 video player with a Flash fallback. It supports captions, a synchronised transcript, and a separate audio track for audio descriptions. It is fully keyboard accessible and works on most browsers and mobile platforms.",
    "pricing" : {
       "once" : false,
       "freeAvailable" : true,
