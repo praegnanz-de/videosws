@@ -19,8 +19,8 @@
   "flags": {
     "flash": false,
     "api": true,
-    "unifiedAPI": true,
-    "unifiedLook": true,
+    "unifiedAPI": false,
+    "unifiedLook": false,
     "fullscreen": true,
     "keyboard": true,
     "subtitles": true,
