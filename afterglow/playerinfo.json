@@ -14,7 +14,7 @@
   "hosted": "possible",
 
   "example": {
-    "jsHead": ["//cdn.jsdelivr.net/afterglow/latest/afterglow.min.js"]
+    "jsHead": ["https://cdn.jsdelivr.net/afterglow/latest/afterglow.min.js"]
   },
 
   "flags": {
