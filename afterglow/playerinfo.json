@@ -1,0 +1,42 @@
+{
+  "name": "afterglow",
+  "version": "latest",
+  "url": "http://www.afterglowplayer.com/",
+  "description": "afterglow is a super easy to integrate, fully responsive HTML5 video player with support for lightboxing and YouTube.",
+  "repository": "https://github.com/moay/afterglow",
+  "license": "mit",
+  "pricing": {
+    "once": false,
+    "subscription": false
+  },
+
+  "library": [],
+  "hosted": "possible",
+
+  "example": {
+    "jsHead": ["https://cdn.jsdelivr.net/afterglow/latest/afterglow.min.js"]
+  },
+
+  "flags": {
+    "flash": true,
+    "services": "youtube",
+    "unifiedLook": true,
+    "api": true,
+    "unifiedAPI": true,
+    "responsive": true,
+    "skinnable": true,
+    "embeddable": false,
+    "audioOnly": false,
+    "cms": [],
+    "fullscreen": true,
+    "keyboard": true,
+    "aria": false,
+    "subtitles": true,
+    "chapters": false,
+    "playlists": false,
+    "speedControl": false,
+    "qualityControl": true,
+    "hls": false,
+    "dash": false
+  }
+}
