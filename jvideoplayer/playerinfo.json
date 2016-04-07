@@ -1,0 +1,68 @@
+{
+  "name": "jvideoplayer",
+  "version": "3.0.0",
+  "url": "https://github.com/lingtalfi/jVideoPlayer",
+  "description": "A javascript library to help building a video player.",
+  "repository": "https://github.com/lingtalfi/jVideoPlayer",
+  "license": "none",
+  "pricing": {
+    "once": false,
+    "subscription": false,
+    "freeAvailable": true
+  },
+  "library": ["jquery"],
+  "hosted": false,
+
+  "example": {
+    "css": [
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/layered-manager/layered-manager.css",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/mantis/plugin.mantis.backtoapp.css",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/remote/mantis/style.css"
+    ],
+    "jsHead": [
+      "http://code.jquery.com/jquery-2.2.2.min.js",
+      "https://cdn.rawgit.com/lingtalfi/JFullScreen/master/www/libs/jfullscreen/js/jfullscreen.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/js/video-element/html5-video-element.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/js/eventsqueue/eventsqueue.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/layered-manager/layered-manager.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/video-player.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/plugin.debughelper.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/ad/plugin.ad.minplay.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/ad/plugin.ad.skipadbutton.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/innerqueue/plugin.innerqueue.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/innerqueue/innerqueue.handler.cue.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/innerqueue/innerqueue.handler.ad.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/plugin.inactivity.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/mantis/plugin.mantis.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/mantis/plugin.mantis.timeelapsed.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/mantis/plugin.mantis.clonethumbnailpreview.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/mantis/plugin.mantis.timelinemark.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/video-player/plugin/mantis/plugin.mantis.backtoapp.js",
+      "https://cdn.rawgit.com/lingtalfi/jDragSlider/master/www/libs/jdragslider/js/jdragslider.js",
+      "https://cdn.rawgit.com/lingtalfi/VSwitch/master/www/libs/vswitch/js/vswitch.js",
+      "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/3.0.0/www/libs/jvideoplayer/widget/remote/mantis/mantis.js"
+    ]
+  },
+
+  "flags": {
+    "flash": false,
+    "api": true,
+    "unifiedAPI": true,
+    "fullscreen": true,
+    "keyboard": false,
+    "subtitles": true,
+    "chapters": false,
+    "playlists": false,
+    "responsive": true,
+    "embeddable": false,
+    "cms": [],
+    "services": "",
+    "skinnable": true,
+    "audioOnly": false,
+    "speedControl": false,
+    "qualityControl": false,
+    "aria": false,
+    "hls": false,
+    "dash": false
+  }
+}
