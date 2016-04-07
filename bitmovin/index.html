@@ -1,0 +1,27 @@
+<div id='player'></div>
+
+<script>
+  bitdash('player').setup({
+    key: '0747330e-f3ad-4481-a7b6-226bff4df64f',
+    source: {
+      dash: '{{player.video.dash}}',
+      hls: '{{player.video.hls}}',
+      progressive: [{
+        url: '{{player.video.mp4}}',
+        type: 'video/mp4'
+      }, {
+        url: '{{player.video.ogv}}',
+        type: 'video/ogv'
+      }, {
+        url: '{{player.video.webm}}',
+        type: 'video/webm'
+      }],
+      poster: '{{player.poster}}'
+    }
+  }).then(function(player) {
+    player.addSubtitle('{{player.subtitles_en.vtt}}', 1, 'subtitle', 'en', 'English (VTT)');
+    player.addSubtitle('{{player.subtitles_de.vtt}}', 1, 'subtitle', 'de', 'Deutsch (VTT)');
+    player.addSubtitle('{{player.subtitles_en.srt}}', 1, 'subtitle', 'en', 'English (SRT)');
+    player.addSubtitle('{{player.subtitles_de.srt}}', 1, 'subtitle', 'de', 'Deutsch (SRT)');
+  })
+</script>
