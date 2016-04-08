@@ -17,6 +17,15 @@
         type: 'video/webm'
       }],
       poster: '{{player.poster}}'
+    },
+    playback: {
+      preferredTech : [{
+        player: 'native',
+        streaming: 'hls'
+      }, {
+        player: 'html5',
+        streaming: 'hls'
+      }]
     }
   }).then(function(player) {
     player.addSubtitle('{{player.subtitles_en.vtt}}', 1, 'subtitle', 'en', 'English (VTT)');
