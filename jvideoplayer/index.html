@@ -1,0 +1,338 @@
+    <style>
+
+                    .loaderimage {
+                        position: absolute;
+                        top: 0;
+                        z-index: 500;
+                        width: 100%;
+                        height: 100%;
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-attachment: fixed;
+                        background-color: #000;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center
+                    }
+
+                    /*--------------------------------------------------------------------------*
+                    // code specific for videosws demo
+                    /*--------------------------------------------------------------------------*/
+                    .player-embed.responsive {
+                        position: relative;
+                        width: 800px;
+                        height: 600px;
+                        margin-bottom: 60px;
+                    }
+
+                    .mantis_host .player_controls{
+                        bottom: 6%;
+                    }
+
+                    .mantis_host .cue {
+                        font-size: 1.5em;
+                    }
+
+
+                </style>
+                <div class=loaderimage style=background-image:url({{player.poster}})>
+                    <style>@-webkit-keyframes uil-default-anim {
+                               0% {
+                                   opacity: 1
+                               }
+                               100% {
+                                   opacity: 0
+                               }
+                           }
+
+                    @keyframes uil-default-anim {
+                        0% {
+                            opacity: 1
+                        }
+                        100% {
+                            opacity: 0
+                        }
+                    }
+
+                    .uil-default-css > div:nth-of-type(1) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -.5s;
+                        animation-delay: -.5s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(2) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -.4166666666666667s;
+                        animation-delay: -.4166666666666667s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(3) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -.33333333333333337s;
+                        animation-delay: -.33333333333333337s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(4) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -.25s;
+                        animation-delay: -.25s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(5) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -.16666666666666669s;
+                        animation-delay: -.16666666666666669s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(6) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: -83.33333333333331ms;
+                        animation-delay: -83.33333333333331ms
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(7) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 0s;
+                        animation-delay: 0s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(8) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: 83.33333333333337ms;
+                        animation-delay: 83.33333333333337ms
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(9) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: .16666666666666663s;
+                        animation-delay: .16666666666666663s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(10) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: .25s;
+                        animation-delay: .25s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(11) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: .33333333333333337s;
+                        animation-delay: .33333333333333337s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }
+
+                    .uil-default-css > div:nth-of-type(12) {
+                        -webkit-animation: uil-default-anim 1s linear infinite;
+                        animation: uil-default-anim 1s linear infinite;
+                        -webkit-animation-delay: .41666666666666663s;
+                        animation-delay: .41666666666666663s
+                    }
+
+                    .uil-default-css {
+                        position: relative;
+                        background: 0 0;
+                        width: 200px;
+                        height: 200px
+                    }</style>
+                    <div class=uil-default-css style=transform:scale(.6)>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(0) translate(0,-60px);transform:rotate(0) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                        <div style="top:80px;left:93px;width:14px;height:40px;background:#00b2ff;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute"></div>
+                    </div>
+                </div>
+                <div class=mantis_host>
+                    <div class=videoplayer></div>
+                    <div class=player_controls>
+                        <section class=timeline><label class=noselect>00:00:00</label>
+                            <div class=scrubber>
+                                <div class=progress>
+                                    <div class=completed></div>
+                                    <div class=buffered></div>
+                                    <div class="mark arrow"></div>
+                                    <div class="mark guide"></div>
+                                </div>
+                                <button class="target handle">
+                                    <div class=handle></div>
+                                </button>
+                                <section class="preview noselect"></section>
+                            </div>
+                        </section>
+                        <section class=control_bar>
+                            <div class="control control_play_resume jvp-icon-play"></div>
+                            <div class="control control_pause jvp-icon-pause"></div>
+                            <div class="control control_volume jvp-icon-volume-high">
+                                <div class=menu_wrapper>
+                                    <div class=padder>
+                                        <div class=scrubber>
+                                            <div class=progress>
+                                                <div class=completed></div>
+                                            </div>
+                                            <button class="target handle vertical">
+                                                <div class="handle vertical"></div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="video_title noselect"><span>The video title here</span></div>
+                            <div class="control control_fullscreen jvp-icon-enlarge"></div>
+                        </section>
+                        <section class=bubble_bar>
+                            <div class=bubble><label><a href=#>Skip ad</a></label></div>
+                        </section>
+                    </div>
+                </div>
+                <script>!function (e) {
+                    e(document).ready(function () {
+                        var n = [{
+                            start: 12e3,
+                            url: "/video/late-for-work.mp4",
+                            url: "https://cdn.rawgit.com/lingtalfi/jVideoPlayer/2.0.0/www/libs/jvideoplayer/prototype/video/late-for-work.mp4",
+                            url: "http://somecontent.netau.net/late-for-work.mp4",
+                            title: "Advertising: Late for work",
+                            minplay: 3
+                        }], t = [{
+                            start: 2e3,
+                            text: "You could add subtitles here if you wanted to...",
+                            duration: 2e3
+                        }, {start: 6e3, text: "...parsing a srt file is an option", duration: 2500}, {
+                            start: 1e4,
+                            text: "There is an ad at 00:12",
+                            duration: 2500
+                        }], i = e(".mantis_host"), r = e("> .videoplayer", i), a = e(".loaderimage"), u = new pluginInnerQueue({
+                            matchVideo: function (e) {
+                                return 1 === e.id
+                            }
+                        });
+                        u.registerHandler(new pluginInnerQueueHandlerCue, t), u.registerHandler(new pluginInnerQueueHandlerAd({plugins: [new pluginAdMinPlay]}), n, !0);
+                        var l = new videoPlayer({
+                            element: r,
+                            plugins: [new pluginDebugHelper({
+                                mode: "triggered",
+                                blackList: ["progress", "timeupdate"]
+                            }), new pluginAdSkipAdButton({text: "Skip this ad"}), u, new pluginMantis({
+                                mantis: new Mantis(i),
+                                plugins: [
+                                    new pluginInactivity({
+                                        jHost: i,
+                                    }), 
+                                    new pluginMantisTimeElapsed, 
+                                    new pluginMantisCloneThumbnailPreview, new pluginMantisTimelineMark({
+                                    marks: n,
+                                    matchVideo: function (e) {
+                                        return e.type && "main" === e.type
+                                    }
+                                })]
+                            })]
+                        }), o = {
+                            id: 1,
+                            type: "main",
+                            url: "/video/bunny.mov",
+                            url: "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_720p_h264.mov",
+                            url: "{{player.video.mp4}}",
+                            title: "Playing a demo video"
+                        };
+                        l.prepareVideo(o, [0, 0], {
+                            playAfter: function () {
+                                a.hide()
+                            }
+                        })
+                    })
+                }(jQuery)</script>
