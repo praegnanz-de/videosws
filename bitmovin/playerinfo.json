@@ -13,7 +13,7 @@
   "hosted": "possible",
 
   "example": {
-    "jsHead": ["http://bitmovin-a.akamaihd.net/bitdash/4.3/bitdash.min.js"]
+    "jsHead": ["http://bitmovin-a.akamaihd.net/bitdash/stable/bitdash.min.js"]
   },
 
   "flags": {
