@@ -3,14 +3,14 @@
   "version": "6",
   "url": "http://viblast.com/player/",
   "description": "Video playback of HLS and MPEG-DASH streams for HTML5 & mobile. P2P capable.",
-  "license": "https://portal.viblast.com/portal/terms-of-service/",
+  "license": "https://viblast.com/terms-of-service",
   "pricing": {
     "once": false,
     "subscription": true,
     "freeAvailable": true
   },
   "library": [],
-  "hosted": false,
+  "hosted": "possible",
 
   "example": {
     "css": ["https://vjs.zencdn.net/5.6.0/video-js.css"],
@@ -36,7 +36,7 @@
     "services": [],
     "skinnable": true,
     "audioOnly": true,
-    "speedControl": false,
+    "speedControl": true,
     "qualityControl": true,
     "aria": false,
     "hls": true,
