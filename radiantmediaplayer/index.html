@@ -1,0 +1,24 @@
+<div id="rmpPlayer"></div>
+<script type="text/javascript">
+    var bitrates = {
+        hls: "{{player.hls}}"
+    };
+    var ccFiles = [
+        ["en", "English", "{{player.subtitles_en.vtt}}"],
+        ["de", "German", "{{player.subtitles_de.vtt}}"]
+    ];
+    var settings = {
+        licenseKey: "Kl8lZ289dmRrPWsxMnp2JV8q",
+        bitrates: bitrates,
+        delayToFade: 3000,
+        width: 960,
+        height: 540,
+        skin: "s1",
+        ccFiles: ccFiles,
+        nav: true,
+        poster: "{{player.poster}}"
+    };
+    var element = "rmpPlayer";
+    var rmp = new RadiantMP(element);
+    rmp.init(settings);
+</script>
