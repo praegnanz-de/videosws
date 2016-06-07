@@ -1,0 +1,39 @@
+{
+  "name": "Radiant Media Player",
+  "version": "3.2.1",
+  "url": "https://www.radiantmediaplayer.com",
+  "description": "A cross-device HTML5-first video player for today's web. Live, DVR and on-demand video in a snap. Stream to HTML5 video with HLS for desktop and mobile devices. Discover our advanced video ads solution: ad scheduling, ad-block detection, video ads API and more. We also support MPEG-DASH, DRM, AMP, advanced analytics and the player comes with a fully-featured, unified Flash fallback with HLS support.",
+  "pricing": {
+    "once": false,
+    "subscription": true,
+    "freeAvailable": true
+  },
+  "license": "https://www.radiantmediaplayer.com/terms-of-service.html",
+  "library": [],
+  "hosted": "possible",
+  "example": {
+    "jsHead": "https://cdn.radiantmediatechs.com/rmp/3.2.1/js/rmp.min.js"
+  },
+  "flags": {
+    "flash": true,
+    "api": true,
+    "unifiedAPI": true,
+    "unifiedLook": true,
+    "fullscreen": true,
+    "keyboard": true,
+    "subtitles": true,
+    "chapters": false,
+    "playlists": true,
+    "responsive": true,
+    "embeddable": true,
+    "cms": [],
+    "services": [],
+    "skinnable": true,
+    "audioOnly": true,
+    "speedControl": true,
+    "qualityControl": true,
+    "aria": false,
+    "hls": true,
+    "dash": true
+  }
+}
