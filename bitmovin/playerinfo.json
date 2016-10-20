@@ -1,7 +1,7 @@
 {
   "name": "Bitmovin Adaptive Streaming Player",
   "version": "5.2",
-  "url": "http://cloudfront.dash-player.com/wp-content/uploads/2014/09/bitdash-license.pdf",
+  "url": "https://bitmovin.com/",
   "description": "Bitmovin's Adaptive Streaming Player enables HTML5 adaptive streaming with MPEG-DASH and HLS native in your browser with no need for plugins like Flash or Silverlight. Due to the native integration with the browser it is possible to play back very high resolutions such as 4K or very high framerates like 60fps. Multiple DRM systems, e.g., PlayReady, Widevine, FairPlay and Access/PrimeTime can be used in parallel with Bitmovin’s player implementation, to achieve highest browser coverage – also for protected- and studio content. The rich feature set of our player further includes advertising, using VAST, cutting edge technologies, like VR and 360° video and many more.",
   "license": "https://bitmovin.com/terms/",
   "pricing": {
