@@ -28,9 +28,9 @@
       }]
     }
   }).then(function(player) {
-    player.addSubtitle('{{player.subtitles_en.vtt}}', 1, 'subtitle', 'en', 'English (VTT)');
-    player.addSubtitle('{{player.subtitles_de.vtt}}', 2, 'subtitle', 'de', 'Deutsch (VTT)');
-    player.addSubtitle('{{player.subtitles_en.srt}}', 3, 'subtitle', 'en', 'English (SRT)');
-    player.addSubtitle('{{player.subtitles_de.srt}}', 4, 'subtitle', 'de', 'Deutsch (SRT)');
+    player.addSubtitle({url: '{{player.subtitles_en.vtt}}', id: '1', kind: 'subtitle', lang: 'en', label: 'English (VTT)'});
+    player.addSubtitle({url: '{{player.subtitles_de.vtt}}', id: '2', kind: 'subtitle', lang: 'de', label: 'Deutsch (VTT)'});
+    player.addSubtitle({url: '{{player.subtitles_en.srt}}', id: '3', kind: 'subtitle', lang: 'en', label: 'English (SRT)'});
+    player.addSubtitle({url: '{{player.subtitles_de.srt}}', id: '4', kind: 'subtitle', lang: 'de', label: 'Deutsch (SRT)'});
   })
 </script>
