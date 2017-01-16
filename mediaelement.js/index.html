@@ -8,12 +8,6 @@
     <track kind="subtitles" src="{{player.subtitles_de.vtt}}" srclang="de" label="Deutsch" />
     <track kind="chapters" src="{{player.chapters_en.vtt}}" srclang="en" />
     <track kind="chapters" src="{{player.chapters_de.vtt}}" srclang="de" />
-    <object width="640" height="360" type="application/x-shockwave-flash" data="flashmediaelement.swf">
-        <param name="movie" value="flashmediaelement.swf" />
-        <param name="flashvars" value="controls=true&file={{player.video.mp4}}" />
-        <!-- Image as a last resort -->
-        <img src="{{player.poster}}" width="320" height="240" title="No video playback capabilities" />
-    </object>
 </video>
 
 <script>
