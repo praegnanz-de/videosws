@@ -30,7 +30,7 @@
     "playlists": false,
     "responsive": true,
     "embeddable": false,
-    "cms": ["wordpress", "drupal", "joomla", "typo3"],
+    "cms": ["wordpress", "drupal", "joomla", "typo3", "contao"],
     "services": ["youtube", "vimeo", "dailymotion"],
     "skinnable": true,
     "audioOnly": true,
