@@ -9,13 +9,13 @@
  * License: MIT
  *
  */
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 
-},{}],2:[function(require,module,exports){
+},{}],2:[function(_dereq_,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
-var minDoc = require('min-document');
+var minDoc = _dereq_(1);
 
 if (typeof document !== 'undefined') {
     module.exports = document;
@@ -30,7 +30,7 @@ if (typeof document !== 'undefined') {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":1}],3:[function(require,module,exports){
+},{"1":1}],3:[function(_dereq_,module,exports){
 (function (global){
 if (typeof window !== "undefined") {
     module.exports = window;
@@ -43,7 +43,7 @@ if (typeof window !== "undefined") {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],4:[function(require,module,exports){
+},{}],4:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -52,13 +52,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _mejs = require('./mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _en = require('../languages/en');
+var _en = _dereq_(14);
 
-var _general = require('../utils/general');
+var _general = _dereq_(21);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -429,28 +429,28 @@ if (typeof mejsL10n !== 'undefined') {
 
 exports.default = i18n;
 
-},{"../languages/en":14,"../utils/general":19,"./mejs":6}],5:[function(require,module,exports){
+},{"14":14,"21":21,"6":6}],5:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _window = require('global/window');
+var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = require('global/document');
+var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = require('./mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _media = require('../utils/media');
+var _media = _dereq_(22);
 
-var _renderer = require('./renderer');
+var _renderer = _dereq_(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -646,10 +646,12 @@ var MediaElement = function MediaElement(idOrNode, options) {
 
 				var capName = '' + propName.substring(0, 1).toUpperCase() + propName.substring(1),
 				    getFn = function getFn() {
-					return t.mediaElement.renderer['get' + capName]();
+					return t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null ? t.mediaElement.renderer['get' + capName]() : null;
 				},
 				    setFn = function setFn(value) {
-					t.mediaElement.renderer['set' + capName](value);
+					if (t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null) {
+						t.mediaElement.renderer['set' + capName](value);
+					}
 				};
 
 				addProperty(t.mediaElement, propName, getFn, setFn);
@@ -662,7 +664,7 @@ var MediaElement = function MediaElement(idOrNode, options) {
 	// `src` is a property separated from the others since it carries the logic to set the proper renderer
 	// based on the media files detected
 	getSrc = function getSrc() {
-		return t.mediaElement.renderer.getSrc();
+		return t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null ? t.mediaElement.renderer.getSrc() : null;
 	},
 	    setSrc = function setSrc(value) {
 
@@ -720,7 +722,7 @@ var MediaElement = function MediaElement(idOrNode, options) {
 				args[_key] = arguments[_key];
 			}
 
-			return typeof t.mediaElement.renderer[methodName] === 'function' ? t.mediaElement.renderer[methodName](args) : null;
+			return t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null && typeof t.mediaElement.renderer[methodName] === 'function' ? t.mediaElement.renderer[methodName](args) : null;
 		};
 	};
 
@@ -859,14 +861,14 @@ _window2.default.MediaElement = MediaElement;
 
 exports.default = MediaElement;
 
-},{"../utils/media":20,"./mejs":6,"./renderer":7,"global/document":2,"global/window":3}],6:[function(require,module,exports){
+},{"2":2,"22":22,"3":3,"6":6,"7":7}],6:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _window = require('global/window');
+var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
@@ -876,7 +878,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mejs = {};
 
 // version number
-mejs.version = '3.0.0';
+mejs.version = '3.1.2';
 
 // Basic HTML5 settings
 mejs.html5media = {
@@ -888,10 +890,11 @@ mejs.html5media = {
 	'volume', 'src', 'currentTime', 'muted',
 
 	// GET only
-	'duration', 'paused', 'ended',
+	'duration', 'paused', 'ended', 'buffered', 'error', 'networkState', 'readyState', 'seeking', 'seekable',
 
 	// OTHERS
-	'error', 'currentSrc', 'networkState', 'preload', 'buffered', 'bufferedBytes', 'bufferedTime', 'readyState', 'seeking', 'initialTime', 'startOffsetTime', 'defaultPlaybackRate', 'playbackRate', 'played', 'seekable', 'autoplay', 'loop', 'controls'],
+	'currentSrc', 'preload', 'bufferedBytes', 'bufferedTime', 'initialTime', 'startOffsetTime', 'defaultPlaybackRate', 'playbackRate', 'played', 'autoplay', 'loop', 'controls'],
+	readOnlyProperties: ['duration', 'paused', 'ended', 'buffered', 'error', 'networkState', 'readyState', 'seeking', 'seekable'],
 	/**
   * @type {String[]}
   */
@@ -910,7 +913,7 @@ _window2.default.mejs = mejs;
 
 exports.default = mejs;
 
-},{"global/window":3}],7:[function(require,module,exports){
+},{"3":3}],7:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -922,7 +925,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _mejs = require('./mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -1036,30 +1039,30 @@ var renderer = exports.renderer = new Renderer();
 
 _mejs2.default.Renderers = renderer;
 
-},{"./mejs":6}],8:[function(require,module,exports){
+},{"6":6}],8:[function(_dereq_,module,exports){
 'use strict';
 
-var _window = require('global/window');
+var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = require('global/document');
+var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = require('../core/mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _i18n = require('../core/i18n');
+var _i18n = _dereq_(4);
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _player = require('../player');
+var _player = _dereq_(16);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _constants = require('../utils/constants');
+var _constants = _dereq_(19);
 
 var Features = _interopRequireWildcard(_constants);
 
@@ -1474,7 +1477,7 @@ Object.assign(_player2.default.prototype, {
 			t.container.find('iframe, embed, object, video').width('100%').height('100%');
 		}
 
-		if (t.options.setDimensions) {
+		if (t.options.setDimensions && typeof t.media.setSize === 'function') {
 			t.media.setSize(screen.width, screen.height);
 		}
 
@@ -1524,7 +1527,9 @@ Object.assign(_player2.default.prototype, {
 				t.container.find('iframe, embed, object, video').width(t.normalWidth).height(t.normalHeight);
 			}
 
-			t.media.setSize(t.normalWidth, t.normalHeight);
+			if (typeof t.media.setSize === 'function') {
+				t.media.setSize(t.normalWidth, t.normalHeight);
+			}
 
 			t.layers.children('div').width(t.normalWidth).height(t.normalHeight);
 		}
@@ -1542,14 +1547,14 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"../core/i18n":4,"../core/mejs":6,"../player":16,"../utils/constants":17,"global/document":2,"global/window":3}],9:[function(require,module,exports){
+},{"16":16,"19":19,"2":2,"3":3,"4":4,"6":6}],9:[function(_dereq_,module,exports){
 'use strict';
 
-var _player = require('../player');
+var _player = _dereq_(16);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _i18n = require('../core/i18n');
+var _i18n = _dereq_(4);
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
@@ -1644,20 +1649,20 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"../core/i18n":4,"../player":16}],10:[function(require,module,exports){
+},{"16":16,"4":4}],10:[function(_dereq_,module,exports){
 'use strict';
 
-var _player = require('../player');
+var _player = _dereq_(16);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _i18n = require('../core/i18n');
+var _i18n = _dereq_(4);
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _constants = require('../utils/constants');
+var _constants = _dereq_(19);
 
-var _time = require('../utils/time');
+var _time = _dereq_(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1708,6 +1713,8 @@ Object.assign(_player2.default.prototype, {
 		t.timefloat = controls.find('.' + t.options.classPrefix + 'time-float');
 		t.timefloatcurrent = controls.find('.' + t.options.classPrefix + 'time-float-current');
 		t.slider = controls.find('.' + t.options.classPrefix + 'time-slider');
+		t.newTime = 0;
+		t.forcedHandlePause = false;
 
 		/**
    *
@@ -1719,7 +1726,6 @@ Object.assign(_player2.default.prototype, {
 			var offset = t.total.offset(),
 			    width = t.total.width(),
 			    percentage = 0,
-			    newTime = 0,
 			    pos = 0,
 			    x = void 0;
 
@@ -1742,17 +1748,18 @@ Object.assign(_player2.default.prototype, {
 
 				pos = x - offset.left;
 				percentage = pos / width;
-				newTime = percentage <= 0.02 ? 0 : percentage * media.duration;
+				t.newTime = percentage <= 0.02 ? 0 : percentage * media.duration;
 
-				// seek to where the mouse is
-				if (mouseIsDown && newTime.toFixed(4) !== media.currentTime.toFixed(4)) {
-					media.setCurrentTime(newTime);
+				// fake seek to where the mouse is 
+				if (mouseIsDown && t.newTime.toFixed(4) !== media.currentTime.toFixed(4)) {
+					t.setCurrentRailHandle(t.newTime);
+					t.updateCurrent(t.newTime);
 				}
 
 				// position floating time box
-				if (!_constants.HAS_TOUCH) {
+				if (!_constants.IS_IOS && !_constants.IS_ANDROID) {
 					t.timefloat.css('left', pos);
-					t.timefloatcurrent.html((0, _time.secondsToTimeCode)(newTime, player.options.alwaysShowHours));
+					t.timefloatcurrent.html((0, _time.secondsToTimeCode)(t.newTime, player.options.alwaysShowHours));
 					t.timefloat.show();
 				}
 			}
@@ -1797,6 +1804,18 @@ Object.assign(_player2.default.prototype, {
 			if (now - lastKeyPressTime >= 1000) {
 				media.play();
 			}
+		},
+		    handleMouseup = function handleMouseup() {
+
+			if (t.forcedHandlePause) {
+				t.media.play();
+			}
+			if (mouseIsDown && t.newTime.toFixed(4) !== media.currentTime.toFixed(4)) {
+				media.setCurrentTime(t.newTime);
+				player.setCurrentRail();
+				t.updateCurrent(t.newTime);
+			}
+			t.forcedHandlePause = false;
 		};
 
 		// Events
@@ -1900,15 +1919,23 @@ Object.assign(_player2.default.prototype, {
 
 		// handle clicks
 		t.rail.on('mousedown touchstart', function (e) {
+			t.forcedHandlePause = false;
 			if (media.duration !== Infinity) {
 				// only handle left clicks or touch
 				if (e.which === 1 || e.which === 0) {
+
+					if (!media.paused) {
+						t.media.pause();
+						t.forcedHandlePause = true;
+					}
+
 					mouseIsDown = true;
 					handleMouseMove(e);
 					t.globalBind('mousemove.dur touchmove.dur', function (e) {
 						handleMouseMove(e);
 					});
 					t.globalBind('mouseup.dur touchend.dur', function () {
+						handleMouseup();
 						mouseIsDown = false;
 						if (t.timefloat !== undefined) {
 							t.timefloat.hide();
@@ -1923,7 +1950,7 @@ Object.assign(_player2.default.prototype, {
 				t.globalBind('mousemove.dur', function (e) {
 					handleMouseMove(e);
 				});
-				if (t.timefloat !== undefined && !_constants.HAS_TOUCH) {
+				if (t.timefloat !== undefined && !_constants.IS_IOS && !_constants.IS_ANDROID) {
 					t.timefloat.show();
 				}
 			}
@@ -1945,7 +1972,9 @@ Object.assign(_player2.default.prototype, {
 		media.addEventListener('progress', function (e) {
 			if (media.duration !== Infinity) {
 				player.setProgressRail(e);
-				player.setCurrentRail(e);
+				if (!t.forcedHandlePause) {
+					player.setCurrentRail(e);
+				}
 			} else if (!controls.find('.' + t.options.classPrefix + 'broadcast').length) {
 				controls.find('.' + t.options.classPrefix + 'time-rail').empty().html('<span class="' + t.options.classPrefix + 'broadcast">' + mejs.i18n.t('mejs.live-broadcast') + '</span>');
 			}
@@ -1955,7 +1984,9 @@ Object.assign(_player2.default.prototype, {
 		media.addEventListener('timeupdate', function (e) {
 			if (media.duration !== Infinity) {
 				player.setProgressRail(e);
-				player.setCurrentRail(e);
+				if (!t.forcedHandlePause) {
+					player.setCurrentRail(e);
+				}
 				updateSlider(e);
 			} else if (!controls.find('.' + t.options.classPrefix + 'broadcast').length) {
 				controls.find('.' + t.options.classPrefix + 'time-rail').empty().html('<span class="' + t.options.classPrefix + 'broadcast">' + mejs.i18n.t('mejs.live-broadcast') + '</span>');
@@ -1965,7 +1996,9 @@ Object.assign(_player2.default.prototype, {
 		t.container.on('controlsresize', function (e) {
 			if (media.duration !== Infinity) {
 				player.setProgressRail(e);
-				player.setCurrentRail(e);
+				if (!t.forcedHandlePause) {
+					player.setCurrentRail(e);
+				}
 			}
 		});
 	},
@@ -2008,21 +2041,38 @@ Object.assign(_player2.default.prototype, {
 		}
 	},
 	/**
+  * Update the slider's width depending on the time assigned
+  *
+  * @param {Number} fakeTime
+  */
+	setCurrentRailHandle: function setCurrentRailHandle(fakeTime) {
+		var t = this;
+		t.setCurrentRailMain(t, fakeTime);
+	},
+	/**
   * Update the slider's width depending on the current time
   *
   */
 	setCurrentRail: function setCurrentRail() {
-
 		var t = this;
-
+		t.setCurrentRailMain(t);
+	},
+	/**
+  * Method that handles the calculation of the width of the rail.
+  *
+  * @param {MediaElementPlayer} t
+  * @param {?Number} fakeTime
+  */
+	setCurrentRailMain: function setCurrentRailMain(t, fakeTime) {
 		if (t.media.currentTime !== undefined && t.media.duration) {
+			var nTime = typeof fakeTime === 'undefined' ? t.media.currentTime : fakeTime;
 
 			// update bar and handle
 			if (t.total && t.handle) {
-				var newWidth = Math.round(t.total.width() * t.media.currentTime / t.media.duration),
+				var newWidth = Math.round(t.total.width() * nTime / t.media.duration),
 				    handlePos = newWidth - Math.round(t.handle.outerWidth(true) / 2);
 
-				newWidth = t.media.currentTime / t.media.duration * 100;
+				newWidth = nTime / t.media.duration * 100;
 				t.current.width(newWidth + '%');
 				t.handle.css('left', handlePos);
 			}
@@ -2030,14 +2080,14 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"../core/i18n":4,"../player":16,"../utils/constants":17,"../utils/time":21}],11:[function(require,module,exports){
+},{"16":16,"19":19,"24":24,"4":4}],11:[function(_dereq_,module,exports){
 'use strict';
 
-var _player = require('../player');
+var _player = _dereq_(16);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _time = require('../utils/time');
+var _time = _dereq_(24);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2160,22 +2210,24 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"../player":16,"../utils/time":21}],12:[function(require,module,exports){
+},{"16":16,"24":24}],12:[function(_dereq_,module,exports){
 'use strict';
 
-var _mejs = require('../core/mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _i18n = require('../core/i18n');
+var _i18n = _dereq_(4);
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _player = require('../player');
+var _player = _dereq_(16);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _time = require('../utils/time');
+var _time = _dereq_(24);
+
+var _general = _dereq_(21);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2199,6 +2251,10 @@ Object.assign(_player.config, {
   * @type {String}
   */
 	tracksText: '',
+	/**
+  * @type {String}
+  */
+	chaptersText: '',
 	/**
   * Avoid to screen reader speak captions over an audio track.
   *
@@ -2245,6 +2301,7 @@ Object.assign(_player2.default.prototype, {
 		var t = this,
 		    attr = t.options.tracksAriaLive ? ' role="log" aria-live="assertive" aria-atomic="false"' : '',
 		    tracksTitle = t.options.tracksText ? t.options.tracksText : _i18n2.default.t('mejs.captions-subtitles'),
+		    chaptersTitle = t.options.chaptersText ? t.options.chaptersText : _i18n2.default.t('mejs.captions-chapters'),
 		    i = void 0,
 		    kind = void 0;
 
@@ -2256,10 +2313,13 @@ Object.assign(_player2.default.prototype, {
 		}
 
 		t.cleartracks(player);
-		player.chapters = $('<div class="' + t.options.classPrefix + 'chapters ' + t.options.classPrefix + 'layer"></div>').prependTo(layers).hide();
+
 		player.captions = $('<div class="' + t.options.classPrefix + 'captions-layer ' + t.options.classPrefix + 'layer">' + ('<div class="' + t.options.classPrefix + 'captions-position ' + t.options.classPrefix + 'captions-position-hover"' + attr + '>') + ('<span class="' + t.options.classPrefix + 'captions-text"></span>') + '</div>' + '</div>').prependTo(layers).hide();
+
 		player.captionsText = player.captions.find('.' + t.options.classPrefix + 'captions-text');
 		player.captionsButton = $('<div class="' + t.options.classPrefix + 'button ' + t.options.classPrefix + 'captions-button">' + ('<button type="button" aria-controls="' + t.id + '" title="' + tracksTitle + '" aria-label="' + tracksTitle + '"></button>') + ('<div class="' + t.options.classPrefix + 'captions-selector ' + t.options.classPrefix + 'offscreen">') + ('<ul class="' + t.options.classPrefix + 'captions-selector-list">') + ('<li class="' + t.options.classPrefix + 'captions-selector-list-item">') + ('<input type="radio" class="' + t.options.classPrefix + 'captions-selector-input" ') + ('name="' + player.id + '_captions" id="' + player.id + '_captions_none" ') + 'value="none" checked="checked" />' + ('<label class="' + t.options.classPrefix + 'captions-selector-label ') + (t.options.classPrefix + 'captions-selected" ') + ('for="' + player.id + '_captions_none">' + _i18n2.default.t('mejs.none') + '</label>') + '</li>' + '</ul>' + '</div>' + '</div>').appendTo(controls);
+
+		player.chaptersButton = $('<div class="' + t.options.classPrefix + 'button ' + t.options.classPrefix + 'chapters-button">' + ('<button type="button" aria-controls="' + t.id + '" title="' + chaptersTitle + '" aria-label="' + chaptersTitle + '"></button>') + ('<div class="' + t.options.classPrefix + 'chapters-selector ' + t.options.classPrefix + 'offscreen">') + ('<ul class="' + t.options.classPrefix + 'chapters-selector-list" aria-role="menu"></ul>') + '</div>' + '</div>');
 
 		var subtitleCount = 0,
 		    total = player.tracks.length;
@@ -2268,6 +2328,8 @@ Object.assign(_player2.default.prototype, {
 			kind = player.tracks[i].kind;
 			if (kind === 'subtitles' || kind === 'captions') {
 				subtitleCount++;
+			} else if (kind === 'chapters' && !controls.find('.' + t.options.classPrefix + 'chapter-selector').length) {
+				player.chaptersButton.appendTo(controls);
 			}
 		}
 
@@ -2302,6 +2364,35 @@ Object.assign(_player2.default.prototype, {
 				e.stopPropagation();
 			});
 		}
+
+		player.chaptersButton.on('mouseenter focusin', function () {
+			var self = $(this),
+			    chapters = self.find('.' + t.options.classPrefix + 'chapters-selector-list').children().length;
+
+			if (chapters) {
+				self.find('.' + t.options.classPrefix + 'chapters-selector').removeClass(t.options.classPrefix + 'offscreen');
+			}
+		}).on('mouseleave focusout', function () {
+			$(this).find('.' + t.options.classPrefix + 'chapters-selector').addClass(t.options.classPrefix + 'offscreen');
+		})
+		// handle clicks to the chapters radio buttons
+		.on('click', 'input[type=radio]', function () {
+			var self = $(this);
+			player.chaptersButton.find('li').attr('aria-checked', false).end().find('.' + t.options.classPrefix + 'chapters-selected').removeClass(t.options.classPrefix + 'chapters-selected');
+
+			self.prop('checked', true).siblings('.' + t.options.classPrefix + 'chapters-selector-label').addClass(t.options.classPrefix + 'chapters-selected').end().parent().attr('aria-checked', true);
+
+			media.setCurrentTime(parseFloat(self.val()));
+			if (media.paused) {
+				media.play();
+			}
+		}).on('click', '.' + t.options.classPrefix + 'chapters-selector-label', function () {
+			$(this).siblings('input[type="radio"]').trigger('click');
+		})
+		//Allow up/down arrow to change the selected radio without changing the volume.
+		.on('keydown', function (e) {
+			e.stopPropagation();
+		});
 
 		if (!player.options.alwaysShowControls) {
 			// move with controls
@@ -2345,33 +2436,9 @@ Object.assign(_player2.default.prototype, {
 			}, false);
 		}
 
-		media.addEventListener('loadedmetadata', function () {
-			player.displayChapters();
-		}, false);
-
-		player.container.hover(function () {
-			// chapters
-			if (player.hasChapters) {
-				player.chapters.removeClass(t.options.classPrefix + 'offscreen');
-				player.chapters.fadeIn(200).height(player.chapters.find('.' + t.options.classPrefix + 'chapter').outerHeight());
-			}
-		}, function () {
-			if (player.hasChapters && !media.paused) {
-				player.chapters.fadeOut(200, function () {
-					$(this).addClass(t.options.classPrefix + 'offscreen');
-					$(this).css('display', 'block');
-				});
-			}
-		});
-
 		t.container.on('controlsresize', function () {
 			t.adjustLanguageBox();
 		});
-
-		// check for autoplay
-		if (player.node.getAttribute('autoplay') !== null) {
-			player.chapters.addClass(t.options.classPrefix + 'offscreen');
-		}
 	},
 
 	/**
@@ -2506,17 +2573,14 @@ Object.assign(_player2.default.prototype, {
 
 					after();
 
-					if (track.kind === 'chapters') {
-						t.media.addEventListener('play', function () {
-							if (t.media.duration > 0) {
-								t.displayChapters(track);
-							}
-						}, false);
-					}
-
 					if (track.kind === 'slides') {
 						t.setupSlides(track);
 					}
+					// Load by default the first track with `chapters` kind
+					else if (track.kind === 'chapters' && !t.hasChapters) {
+							t.drawChapters(track);
+							t.hasChapters = true;
+						}
 				},
 				error: function error() {
 					t.removeTrackButton(track.trackId);
@@ -2629,13 +2693,43 @@ Object.assign(_player2.default.prototype, {
 
 		var t = this,
 		    track = t.selectedTrack,
-		    i = void 0;
+		    i = void 0,
+		    sanitize = function sanitize(html) {
+
+			var div = document.createElement('div');
+
+			div.innerHTML = html;
+
+			// Remove all `<script>` tags first
+			var scripts = div.getElementsByTagName('script');
+			var i = scripts.length;
+			while (i--) {
+				scripts[i].parentNode.removeChild(scripts[i]);
+			}
+
+			// Loop the elements and remove anything that contains value="javascript:" or an `on*` attribute
+			// (`onerror`, `onclick`, etc.)
+			var allElements = div.getElementsByTagName('*');
+			for (var _i = 0, n = allElements.length; _i < n; _i++) {
+				var attributesObj = allElements[_i].attributes,
+				    attributes = Array.prototype.slice.call(attributesObj);
+
+				for (var j = 0, total = attributes.length; j < total; j++) {
+					if (attributes[j].name.startsWith('on') || attributes[j].value.startsWith('javascript')) {
+						allElements[_i].parentNode.removeChild(allElements[_i]);
+					} else if (attributes[j].name === 'style') {
+						allElements[_i].removeAttribute(attributes[j].name);
+					}
+				}
+			}
+			return div.innerHTML;
+		};
 
 		if (track !== null && track.isLoaded) {
 			i = t.searchTrackPosition(track.entries, t.media.currentTime);
 			if (i > -1) {
 				// Set the line before the timecode as a class so the cue can be targeted if needed
-				t.captionsText.html(track.entries[i].text).attr('class', t.options.classPrefix + 'captions-text ' + (track.entries[i].identifier || ''));
+				t.captionsText.html(sanitize(track.entries[i].text)).attr('class', t.options.classPrefix + 'captions-text ' + (track.entries[i].identifier || ''));
 				t.captions.show().height(0);
 				return; // exit out if one is visible;
 			}
@@ -2705,54 +2799,29 @@ Object.assign(_player2.default.prototype, {
 
 	/**
   *
-  */
-	displayChapters: function displayChapters() {
-		var t = this;
-
-		for (var i = 0, total = t.tracks.length; i < total; i++) {
-			if (t.tracks[i].kind === 'chapters' && t.tracks[i].isLoaded) {
-				t.drawChapters(t.tracks[i]);
-				t.hasChapters = true;
-				break;
-			}
-		}
-	},
-
-	/**
-  *
   * @param {Object} chapters
   */
 	drawChapters: function drawChapters(chapters) {
 		var t = this,
 		    i = void 0,
-		    dur = void 0,
-		    percent = 0,
-		    usedPercent = 0,
 		    total = chapters.entries.length;
 
-		t.chapters.empty();
-
-		for (i = 0; i < total; i++) {
-			dur = chapters.entries[i].stop - chapters.entries[i].start;
-			percent = Math.floor(dur / t.media.duration * 100);
-
-			// too large or not going to fill it in
-			if (percent + usedPercent > 100 || i === chapters.entries.length - 1 && percent + usedPercent < 100) {
-				percent = 100 - usedPercent;
-			}
-
-			t.chapters.append($('<div class="' + t.options.classPrefix + 'chapter" rel="' + chapters.entries[i].start + '" style="left: ' + usedPercent.toString() + '%; width: ' + percent.toString() + '%;">' + ('<div class="' + t.options.classPrefix + 'chapter-block') + ((i === chapters.entries.length - 1 ? ' ' + t.options.classPrefix + 'chapter-block-last' : '') + '">') + ('<span class="ch-title">' + chapters.entries[i].text + '</span>') + '<span class="ch-time">' + ('' + (0, _time.secondsToTimeCode)(chapters.entries[i].start, t.options.alwaysShowHours)) + '&ndash;' + ('' + (0, _time.secondsToTimeCode)(chapters.entries[i].stop, t.options.alwaysShowHours)) + '</span>' + '</div>' + '</div>'));
-			usedPercent += percent;
+		if (!total) {
+			return;
 		}
 
-		t.chapters.find('.' + t.options.classPrefix + 'chapter').click(function () {
-			t.media.setCurrentTime(parseFloat($(this).attr('rel')));
-			if (t.media.paused) {
-				t.media.play();
-			}
-		});
+		t.chaptersButton.find('ul').empty();
 
-		t.chapters.show();
+		for (i = 0; i < total; i++) {
+			t.chaptersButton.find('ul').append($('<li class="' + t.options.classPrefix + 'chapters-selector-list-item" ' + 'role="menuitemcheckbox" aria-live="polite" aria-disabled="false" aria-checked="false">' + ('<input type="radio" class="' + t.options.classPrefix + 'captions-selector-input"') + ('name="' + t.id + '_chapters" value="' + chapters.entries[i].start + '" disabled>') + ('<label class="' + t.options.classPrefix + 'chapters-selector-label">' + chapters.entries[i].text + '</label>') + '</li>'));
+		}
+
+		$.each(t.chaptersButton.find('input[type="radio"]'), function () {
+			$(this).prop({
+				disabled: false,
+				checked: false
+			});
+		});
 	},
 	/**
   * Perform binary search to look for proper track index
@@ -3015,18 +3084,18 @@ if ('x\n\ny'.split(/\n/gi).length !== 3) {
 	};
 }
 
-},{"../core/i18n":4,"../core/mejs":6,"../player":16,"../utils/time":21}],13:[function(require,module,exports){
+},{"16":16,"21":21,"24":24,"4":4,"6":6}],13:[function(_dereq_,module,exports){
 'use strict';
 
-var _player = require('../player');
+var _player = _dereq_(16);
 
 var _player2 = _interopRequireDefault(_player);
 
-var _i18n = require('../core/i18n');
+var _i18n = _dereq_(4);
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _constants = require('../utils/constants');
+var _constants = _dereq_(19);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3266,12 +3335,9 @@ Object.assign(_player2.default.prototype, {
 		});
 
 		// MUTE button
-		mute.find('button').click(function () {
+		mute.find('button').on('click', function () {
 			media.setMuted(!media.muted);
-		});
-
-		//Keyboard input
-		mute.find('button').on('focus', function () {
+		}).on('focus', function () {
 			if (mode === 'vertical') {
 				volumeSlider.show();
 			}
@@ -3319,7 +3385,7 @@ Object.assign(_player2.default.prototype, {
 	}
 });
 
-},{"../core/i18n":4,"../player":16,"../utils/constants":17}],14:[function(require,module,exports){
+},{"16":16,"19":19,"4":4}],14:[function(_dereq_,module,exports){
 'use strict';
 
 /*!
@@ -3373,6 +3439,7 @@ var EN = exports.EN = {
 
 	// features/tracks.js
 	"mejs.captions-subtitles": "Captions/Subtitles",
+	"mejs.captions-chapters": "Chapters",
 	"mejs.none": "None",
 
 	// features/volume.js
@@ -3460,19 +3527,23 @@ var EN = exports.EN = {
 	"mejs.yiddish": "Yiddish"
 };
 
-},{}],15:[function(require,module,exports){
+},{}],15:[function(_dereq_,module,exports){
 'use strict';
 
-var _mejs = require('./core/mejs');
+var _window = _dereq_(3);
+
+var _window2 = _interopRequireDefault(_window);
+
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (typeof jQuery !== 'undefined') {
-	_mejs2.default.$ = jQuery;
+	_mejs2.default.$ = _window2.default.jQuery = _window2.default.$ = jQuery;
 } else if (typeof Zepto !== 'undefined') {
-	_mejs2.default.$ = Zepto;
+	_mejs2.default.$ = _window2.default.Zepto = _window2.default.$ = Zepto;
 
 	// define `outerWidth` method which has not been realized in Zepto
 	Zepto.fn.outerWidth = function (includeMargin) {
@@ -3484,10 +3555,10 @@ if (typeof jQuery !== 'undefined') {
 		return width;
 	};
 } else if (typeof ender !== 'undefined') {
-	_mejs2.default.$ = ender;
+	_mejs2.default.$ = _window2.default.ender = _window2.default.$ = ender;
 }
 
-},{"./core/mejs":6}],16:[function(require,module,exports){
+},{"3":3,"6":6}],16:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -3499,33 +3570,35 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _window = require('global/window');
+var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = require('global/document');
+var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = require('./core/mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _mediaelement = require('./core/mediaelement');
+var _mediaelement = _dereq_(5);
 
 var _mediaelement2 = _interopRequireDefault(_mediaelement);
 
-var _i18n = require('./core/i18n');
+var _i18n = _dereq_(4);
 
 var _i18n2 = _interopRequireDefault(_i18n);
 
-var _constants = require('./utils/constants');
+var _constants = _dereq_(19);
 
-var _general = require('./utils/general');
+var _general = _dereq_(21);
 
-var _time = require('./utils/time');
+var _time = _dereq_(24);
 
-var _dom = require('./utils/dom');
+var _dom = _dereq_(20);
+
+var _media = _dereq_(22);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3539,41 +3612,43 @@ _mejs2.default.players = {};
 var config = exports.config = {
 	// url to poster (to fix iOS 3.x)
 	poster: '',
-	// When the video is ended, we can show the poster.
+	// When the video is ended, show the poster.
 	showPosterWhenEnded: false,
-	// default if the <video width> is not specified
+	// When the video is paused, show the poster.
+	showPosterWhenPaused: false,
+	// Default if the <video width> is not specified
 	defaultVideoWidth: 480,
-	// default if the <video height> is not specified
+	// Default if the <video height> is not specified
 	defaultVideoHeight: 270,
-	// if set, overrides <video width>
+	// If set, overrides <video width>
 	videoWidth: -1,
-	// if set, overrides <video height>
+	// If set, overrides <video height>
 	videoHeight: -1,
-	// default if the user doesn't specify
+	// Default if the user doesn't specify
 	defaultAudioWidth: 400,
-	// default if the user doesn't specify
+	// Default if the user doesn't specify
 	defaultAudioHeight: 40,
-	// default amount to move back when back key is pressed
+	// Default amount to move back when back key is pressed
 	defaultSeekBackwardInterval: function defaultSeekBackwardInterval(media) {
 		return media.duration * 0.05;
 	},
-	// default amount to move forward when forward key is pressed
+	// Default amount to move forward when forward key is pressed
 	defaultSeekForwardInterval: function defaultSeekForwardInterval(media) {
 		return media.duration * 0.05;
 	},
-	// set dimensions via JS instead of CSS
+	// Set dimensions via JS instead of CSS
 	setDimensions: true,
-	// width of audio player
+	// Width of audio player
 	audioWidth: -1,
-	// height of audio player
+	// Height of audio player
 	audioHeight: -1,
-	// initial volume when the player starts (overridden by user cookie)
+	// Initial volume when the player starts (overridden by user cookie)
 	startVolume: 0.8,
-	// useful for <audio> player loops
+	// Useful for <audio> player loops
 	loop: false,
-	// rewind to beginning when media ends
+	// Rewind to beginning when media ends
 	autoRewind: true,
-	// resize to media dimensions
+	// Resize to media dimensions
 	enableAutosize: true,
 	/*
   * Time format to use. Default: 'mm:ss'
@@ -3591,16 +3666,18 @@ var config = exports.config = {
   * Format 'm:s': 1:15
   */
 	timeFormat: '',
-	// forces the hour marker (##:00:00)
+	// Force the hour marker (##:00:00)
 	alwaysShowHours: false,
-	// show framecount in timecode (##:00:00:00)
+	// Show framecount in timecode (##:00:00:00)
 	showTimecodeFrameCount: false,
-	// used when showTimecodeFrameCount is set to true
+	// Used when showTimecodeFrameCount is set to true
 	framesPerSecond: 25,
 	// Hide controls when playing and mouse is not over the video
 	alwaysShowControls: false,
-	// Display the video control
+	// Display the video control when media is loading
 	hideVideoControlsOnLoad: false,
+	// Display the video controls when media is paused
+	hideVideoControlsOnPause: false,
 	// Enable click video element to toggle play/pause
 	clickToPlayPause: true,
 	// Time in ms to hide controls
@@ -3609,25 +3686,25 @@ var config = exports.config = {
 	controlsTimeoutMouseEnter: 2500,
 	// Time in ms to trigger the timer when mouse leaves
 	controlsTimeoutMouseLeave: 1000,
-	// force iPad's native controls
+	// Force iPad's native controls
 	iPadUseNativeControls: false,
-	// force iPhone's native controls
+	// Force iPhone's native controls
 	iPhoneUseNativeControls: false,
-	// force Android's native controls
+	// Force Android's native controls
 	AndroidUseNativeControls: false,
-	// features to show
+	// Features to show
 	features: ['playpause', 'current', 'progress', 'duration', 'tracks', 'volume', 'fullscreen'],
-	// only for dynamic
+	// Only for dynamic
 	isVideo: true,
-	// stretching modes (auto, fill, responsive, none)
+	// Stretching modes (auto, fill, responsive, none)
 	stretching: 'auto',
-	// prefix class names on elements
+	// Prefix class names on elements
 	classPrefix: 'mejs__',
-	// turns keyboard support on and off for this instance
+	// Turn keyboard support on and off for this instance
 	enableKeyboard: true,
-	// when this player starts, it will pause other players
+	// When this player starts, it will pause other players
 	pauseOtherPlayers: true,
-	// array of keyboard actions such as play/pause
+	// Array of keyboard actions such as play/pause
 	keyActions: [{
 		keys: [32, // SPACE
 		179 // GOOGLE play/pause button
@@ -3995,7 +4072,7 @@ var MediaElementPlayer = function () {
 
 			doAnimation = doAnimation === undefined || doAnimation;
 
-			if (!t.controlsAreVisible || t.options.alwaysShowControls || t.keyboardAction || t.media.paused && t.media.readyState === 4 || t.isVideo && !t.options.hideVideoControlsOnLoad && !t.media.readyState || t.media.ended) {
+			if (!t.controlsAreVisible || t.options.alwaysShowControls || t.keyboardAction || t.media.paused && t.media.readyState === 4 && (!t.options.hideVideoControlsOnLoad && t.media.currentTime <= 0 || !t.options.hideVideoControlsOnPause && t.media.currentTime > 0) || t.isVideo && !t.options.hideVideoControlsOnLoad && !t.media.readyState || t.media.ended) {
 				return;
 			}
 
@@ -4081,7 +4158,6 @@ var MediaElementPlayer = function () {
 	}, {
 		key: '_meReady',
 		value: function _meReady(media, domNode) {
-			var _this = this;
 
 			var t = this,
 			    autoplayAttr = domNode.getAttribute('autoplay'),
@@ -4154,7 +4230,7 @@ var MediaElementPlayer = function () {
 					// controls fade
 					if (t.isVideo) {
 
-						if (_constants.HAS_TOUCH && !t.options.alwaysShowControls) {
+						if ((_constants.IS_ANDROID || _constants.IS_IOS) && !t.options.alwaysShowControls) {
 
 							// for touch devices (iOS, Android)
 							// show/hide without animation on touch
@@ -4179,6 +4255,7 @@ var MediaElementPlayer = function () {
 								if (t.options.clickToPlayPause) {
 									var button = t.$media.closest('.' + t.options.classPrefix + 'container').find('.' + t.options.classPrefix + 'overlay-button'),
 									    pressed = button.attr('aria-pressed');
+
 									if (t.media.paused && pressed) {
 										t.pause();
 									} else if (t.media.paused) {
@@ -4313,8 +4390,8 @@ var MediaElementPlayer = function () {
 					// Only change the time format when necessary
 					var duration = null;
 					t.media.addEventListener('timeupdate', function () {
-						if (duration !== _this.duration) {
-							duration = _this.duration;
+						if (duration !== t.media.duration) {
+							duration = t.media.duration;
 							(0, _time.calculateTimeFormat)(duration, t.options, t.options.framesPerSecond || 25);
 
 							// make sure to fill in and resize the controls (e.g., 00:00 => 01:13:15
@@ -4580,7 +4657,7 @@ var MediaElementPlayer = function () {
 				// set native <video> or <audio> and shims
 				t.$media.width('100%').height('100%');
 
-				// if shim is ready, send the size to the embeded plugin
+				// if shim is ready, send the size to the embedded plugin
 				if (t.isVideo) {
 					if (t.media.setSize) {
 						t.media.setSize(parentWidth, newHeight);
@@ -4696,7 +4773,9 @@ var MediaElementPlayer = function () {
 			    siblingsWidth = 0;
 
 			t.rail.siblings().each(function (index, object) {
-				siblingsWidth += parseFloat($(object).outerWidth(true));
+				if ($(object).is(':visible')) {
+					siblingsWidth += parseFloat($(object).outerWidth(true));
+				}
 			});
 
 			siblingsWidth += totalMargin + railMargin + 1;
@@ -4795,6 +4874,16 @@ var MediaElementPlayer = function () {
 			if (player.options.showPosterWhenEnded && player.options.autoRewind) {
 				media.addEventListener('ended', function () {
 					poster.show();
+				}, false);
+			}
+
+			if (player.options.showPosterWhenPaused) {
+				media.addEventListener('pause', function () {
+					// To avoid displaying the poster when video ended, since it
+					// triggers a pause event as well
+					if (!media.ended) {
+						poster.show();
+					}
 				}, false);
 			}
 		}
@@ -5009,7 +5098,24 @@ var MediaElementPlayer = function () {
 	}, {
 		key: 'setSrc',
 		value: function setSrc(src) {
-			this.media.setSrc(src);
+			var t = this;
+			t.media.setSrc(src);
+
+			if (t.media.rendererName.match(/iframe/i) !== null) {
+
+				$('<div id="' + t.media.id + '-iframe-overlay" class="' + t.options.classPrefix + 'iframe-overlay"></div>').insertBefore($('#' + t.media.id + '_' + t.media.rendererName)).on('click', function (e) {
+					if (t.options.clickToPlayPause) {
+						if (t.media.paused) {
+							t.media.play();
+						} else {
+							t.media.pause();
+						}
+
+						e.preventDefault();
+						e.stopPropagation();
+					}
+				});
+			}
 		}
 	}, {
 		key: 'remove',
@@ -5017,6 +5123,14 @@ var MediaElementPlayer = function () {
 
 			var t = this,
 			    rendererName = t.media.rendererName;
+
+			// Stop completely media playing
+			if (!t.media.paused) {
+				t.media.pause();
+			}
+
+			var src = t.media.originalNode.getAttribute('src');
+			t.media.setSrc('');
 
 			// invoke features cleanup
 			for (var featureIndex in t.options.features) {
@@ -5043,13 +5157,30 @@ var MediaElementPlayer = function () {
 				// detach events from the video
 				// @todo: detach event listeners better than this; also detach ONLY the events attached by this plugin!
 				t.$node.attr('id', t.$node.attr('id').replace('_' + rendererName, ''));
+				t.$node.attr('id', t.$node.attr('id').replace('_from_mejs', ''));
+
+				// Remove `autoplay` (not worth bringing it back once player is destroyed)
+				t.$node.removeProp('autoplay');
+
+				// Reintegrate file if it can be played
+				if (t.media.canPlayType((0, _media.getTypeFromFile)(src))) {
+					t.$node.attr('src', src);
+				}
+
+				// If <iframe>, remove overlay
+				if (rendererName.match(/iframe/i) !== null) {
+					t.container.find('#' + t.media.id + '-iframe-overlay').remove();
+				}
+
 				t.$node.clone().insertBefore(t.container).show();
 				t.$node.remove();
 			} else {
 				t.$node.insertBefore(t.container);
 			}
 
-			t.media.remove();
+			if (typeof t.media.destroy === 'function') {
+				t.media.destroy();
+			}
 
 			// Remove the player from the mejs.players object so that pauseOtherPlayers doesn't blow up when trying to
 			// pause a non existent Flash API.
@@ -5060,6 +5191,7 @@ var MediaElementPlayer = function () {
 				t.container.remove();
 			}
 			t.globalUnbind();
+
 			delete t.node.player;
 		}
 	}]);
@@ -5075,8 +5207,8 @@ exports.default = MediaElementPlayer;
 
 (function ($) {
 
-	if (typeof _mejs2.default.$ !== 'undefined') {
-		_mejs2.default.$.fn.mediaelementplayer = function (options) {
+	if (typeof $ !== 'undefined') {
+		$.fn.mediaelementplayer = function (options) {
 			if (options === false) {
 				this.each(function () {
 					var player = $(this).data('mediaelementplayer');
@@ -5100,23 +5232,727 @@ exports.default = MediaElementPlayer;
 	}
 })(_mejs2.default.$);
 
-},{"./core/i18n":4,"./core/mediaelement":5,"./core/mejs":6,"./utils/constants":17,"./utils/dom":18,"./utils/general":19,"./utils/time":21,"global/document":2,"global/window":3}],17:[function(require,module,exports){
+},{"19":19,"2":2,"20":20,"21":21,"22":22,"24":24,"3":3,"4":4,"5":5,"6":6}],17:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.cancelFullScreen = exports.requestFullScreen = exports.isFullScreen = exports.FULLSCREEN_EVENT_NAME = exports.HAS_NATIVE_FULLSCREEN_ENABLED = exports.HAS_TRUE_NATIVE_FULLSCREEN = exports.HAS_IOS_FULLSCREEN = exports.HAS_MS_NATIVE_FULLSCREEN = exports.HAS_MOZ_NATIVE_FULLSCREEN = exports.HAS_WEBKIT_NATIVE_FULLSCREEN = exports.HAS_NATIVE_FULLSCREEN = exports.SUPPORTS_NATIVE_HLS = exports.SUPPORTS_MEDIA_TAG = exports.SUPPORT_POINTER_EVENTS = exports.HAS_MSE = exports.HAS_TOUCH = exports.IS_STOCK_ANDROID = exports.IS_SAFARI = exports.IS_FIREFOX = exports.IS_CHROME = exports.IS_IE = exports.IS_ANDROID = exports.IS_IOS = exports.IS_IPHONE = exports.IS_IPAD = exports.UA = exports.NAV = undefined;
+exports.PluginDetector = undefined;
 
-var _window = require('global/window');
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _window = _dereq_(3);
 
 var _window2 = _interopRequireDefault(_window);
 
-var _document = require('global/document');
+var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = require('../core/mejs');
+var _mejs = _dereq_(6);
+
+var _mejs2 = _interopRequireDefault(_mejs);
+
+var _i18n = _dereq_(4);
+
+var _i18n2 = _interopRequireDefault(_i18n);
+
+var _renderer = _dereq_(7);
+
+var _dom = _dereq_(20);
+
+var _constants = _dereq_(19);
+
+var _media = _dereq_(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Shim that falls back to Flash if a media type is not supported.
+ *
+ * Any format not supported natively, including, RTMP, FLV, HLS and M(PEG)-DASH (if browser does not support MSE),
+ * will play using Flash.
+ */
+
+/**
+ * Core detector, plugins are added below
+ *
+ */
+var PluginDetector = exports.PluginDetector = {
+	/**
+  * Cached version numbers
+  * @type {Array}
+  */
+	plugins: [],
+
+	/**
+  * Test a plugin version number
+  * @param {String} plugin - In this scenario 'flash' will be tested
+  * @param {Array} v - An array containing the version up to 3 numbers (major, minor, revision)
+  * @return {Boolean}
+  */
+	hasPluginVersion: function hasPluginVersion(plugin, v) {
+		var pv = PluginDetector.plugins[plugin];
+		v[1] = v[1] || 0;
+		v[2] = v[2] || 0;
+		return pv[0] > v[0] || pv[0] === v[0] && pv[1] > v[1] || pv[0] === v[0] && pv[1] === v[1] && pv[2] >= v[2];
+	},
+
+	/**
+  * Detect plugin and store its version number
+  *
+  * @see PluginDetector.detectPlugin
+  * @param {String} p
+  * @param {String} pluginName
+  * @param {String} mimeType
+  * @param {String} activeX
+  * @param {Function} axDetect
+  */
+	addPlugin: function addPlugin(p, pluginName, mimeType, activeX, axDetect) {
+		PluginDetector.plugins[p] = PluginDetector.detectPlugin(pluginName, mimeType, activeX, axDetect);
+	},
+
+	/**
+  * Obtain version number from the mime-type (all but IE) or ActiveX (IE)
+  *
+  * @param {String} pluginName
+  * @param {String} mimeType
+  * @param {String} activeX
+  * @param {Function} axDetect
+  * @return {int[]}
+  */
+	detectPlugin: function detectPlugin(pluginName, mimeType, activeX, axDetect) {
+
+		var version = [0, 0, 0],
+		    description = void 0,
+		    ax = void 0;
+
+		// Firefox, Webkit, Opera; avoid MS Edge since `plugins` cannot be accessed
+		if (!_constants.IS_EDGE && _constants.NAV.plugins !== null && _constants.NAV.plugins !== undefined && _typeof(_constants.NAV.plugins[pluginName]) === 'object') {
+			description = _constants.NAV.plugins[pluginName].description;
+			if (description && !(typeof _constants.NAV.mimeTypes !== 'undefined' && _constants.NAV.mimeTypes[mimeType] && !_constants.NAV.mimeTypes[mimeType].enabledPlugin)) {
+				version = description.replace(pluginName, '').replace(/^\s+/, '').replace(/\sr/gi, '.').split('.');
+				for (var i = 0; i < version.length; i++) {
+					version[i] = parseInt(version[i].match(/\d+/), 10);
+				}
+			}
+			// Internet Explorer / ActiveX
+		} else if (_window2.default.ActiveXObject !== undefined) {
+			try {
+				ax = new ActiveXObject(activeX);
+				if (ax) {
+					version = axDetect(ax);
+				}
+			} catch (e) {}
+		}
+		return version;
+	}
+};
+
+/**
+ * Add Flash detection
+ *
+ */
+PluginDetector.addPlugin('flash', 'Shockwave Flash', 'application/x-shockwave-flash', 'ShockwaveFlash.ShockwaveFlash', function (ax) {
+	// adapted from SWFObject
+	var version = [],
+	    d = ax.GetVariable("$version");
+	if (d) {
+		d = d.split(" ")[1].split(",");
+		version = [parseInt(d[0], 10), parseInt(d[1], 10), parseInt(d[2], 10)];
+	}
+	return version;
+});
+
+var FlashMediaElementRenderer = {
+
+	/**
+  * Create the player instance and add all native events/methods/properties as possible
+  *
+  * @param {MediaElement} mediaElement Instance of mejs.MediaElement already created
+  * @param {Object} options All the player configuration options passed through constructor
+  * @param {Object[]} mediaFiles List of sources with format: {src: url, type: x/y-z}
+  * @return {Object}
+  */
+	create: function create(mediaElement, options, mediaFiles) {
+
+		var flash = {},
+		    i = void 0,
+		    il = void 0;
+
+		// store main variable
+		flash.options = options;
+		flash.id = mediaElement.id + '_' + flash.options.prefix;
+		flash.mediaElement = mediaElement;
+
+		// insert data
+		flash.flashState = {};
+		flash.flashApi = null;
+		flash.flashApiStack = [];
+
+		// mediaElements for get/set
+		var props = _mejs2.default.html5media.properties,
+		    assignGettersSetters = function assignGettersSetters(propName) {
+
+			// add to flash state that we will store
+			flash.flashState[propName] = null;
+
+			var capName = '' + propName.substring(0, 1).toUpperCase() + propName.substring(1);
+
+			flash['get' + capName] = function () {
+
+				if (flash.flashApi !== null) {
+
+					if (flash.flashApi['get_' + propName] !== undefined) {
+						var _ret = function () {
+							var value = flash.flashApi['get_' + propName]();
+
+							// special case for buffered to conform to HTML5's newest
+							if (propName === 'buffered') {
+								return {
+									v: {
+										start: function start() {
+											return 0;
+										},
+										end: function end() {
+											return value;
+										},
+										length: 1
+									}
+								};
+							}
+
+							return {
+								v: value
+							};
+						}();
+
+						if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+					} else {
+						return null;
+					}
+				} else {
+					return null;
+				}
+			};
+
+			flash['set' + capName] = function (value) {
+				if (propName === 'src') {
+					value = (0, _media.absolutizeUrl)(value);
+				}
+
+				// send value to Flash
+				if (flash.flashApi !== null && flash.flashApi['set_' + propName] !== undefined) {
+					flash.flashApi['set_' + propName](value);
+				} else {
+					// store for after "READY" event fires
+					flash.flashApiStack.push({
+						type: 'set',
+						propName: propName,
+						value: value
+					});
+				}
+			};
+		};
+
+		for (i = 0, il = props.length; i < il; i++) {
+			assignGettersSetters(props[i]);
+		}
+
+		// add mediaElements for native methods
+		var methods = _mejs2.default.html5media.methods,
+		    assignMethods = function assignMethods(methodName) {
+
+			// run the method on the native HTMLMediaElement
+			flash[methodName] = function () {
+
+				if (flash.flashApi !== null) {
+
+					// send call up to Flash ExternalInterface API
+					if (flash.flashApi['fire_' + methodName]) {
+						try {
+							flash.flashApi['fire_' + methodName]();
+						} catch (e) {
+							
+						}
+					} else {
+						
+					}
+				} else {
+					// store for after "READY" event fires
+					flash.flashApiStack.push({
+						type: 'call',
+						methodName: methodName
+					});
+				}
+			};
+		};
+		methods.push('stop');
+		for (i = 0, il = methods.length; i < il; i++) {
+			assignMethods(methods[i]);
+		}
+
+		// give initial events like in others renderers
+		var initEvents = ['rendererready', 'loadeddata', 'loadedmetadata', 'canplay'];
+
+		for (i = 0, il = initEvents.length; i < il; i++) {
+			var event = (0, _dom.createEvent)(initEvents[i], flash);
+			mediaElement.dispatchEvent(event);
+		}
+
+		// add a ready method that Flash can call to
+		_window2.default['__ready__' + flash.id] = function () {
+
+			flash.flashReady = true;
+			flash.flashApi = _document2.default.getElementById('__' + flash.id);
+
+			// do call stack
+			if (flash.flashApiStack.length) {
+				for (var _i = 0, _il = flash.flashApiStack.length; _i < _il; _i++) {
+
+					var stackItem = flash.flashApiStack[_i];
+
+					if (stackItem.type === 'set') {
+						var propName = stackItem.propName,
+						    capName = '' + propName.substring(0, 1).toUpperCase() + propName.substring(1);
+
+						flash['set' + capName](stackItem.value);
+					} else if (stackItem.type === 'call') {
+						flash[stackItem.methodName]();
+					}
+				}
+			}
+		};
+
+		_window2.default['__event__' + flash.id] = function (eventName, message) {
+
+			var event = (0, _dom.createEvent)(eventName, flash);
+			event.message = message || '';
+
+			// send event from Flash up to the mediaElement
+			flash.mediaElement.dispatchEvent(event);
+		};
+
+		// insert Flash object
+		flash.flashWrapper = _document2.default.createElement('div');
+
+		var autoplay = !!mediaElement.getAttribute('autoplay'),
+		    flashVars = ['uid=' + flash.id, 'autoplay=' + autoplay],
+		    isVideo = mediaElement.originalNode !== null && mediaElement.originalNode.tagName.toLowerCase() === 'video',
+		    flashHeight = isVideo ? mediaElement.originalNode.height : 1,
+		    flashWidth = isVideo ? mediaElement.originalNode.width : 1;
+
+		if (!!mediaElement.originalNode.currentSrc.length) {
+			flashVars.push('src=' + mediaElement.originalNode.currentSrc);
+		}
+
+		if (flash.options.enablePseudoStreaming === true) {
+			flashVars.push('pseudostreamstart=' + flash.options.pseudoStreamingStartQueryParam);
+			flashVars.push('pseudostreamtype=' + flash.options.pseudoStreamingType);
+		}
+
+		mediaElement.appendChild(flash.flashWrapper);
+
+		if (mediaElement.originalNode !== null) {
+			mediaElement.originalNode.style.display = 'none';
+		}
+
+		var settings = [];
+
+		if (_constants.IS_IE) {
+			var specialIEContainer = _document2.default.createElement('div');
+			flash.flashWrapper.appendChild(specialIEContainer);
+
+			settings = ['classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"', 'codebase="//download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"', 'id="__' + flash.id + '"', 'width="' + flashWidth + '"', 'height="' + flashHeight + '"'];
+
+			if (!isVideo) {
+				settings.push('style="clip: rect(0 0 0 0); position: absolute;"');
+			}
+
+			specialIEContainer.outerHTML = '<object ' + settings.join(' ') + '>' + ('<param name="movie" value="' + flash.options.pluginPath + flash.options.filename + '?x=' + new Date() + '" />') + ('<param name="flashvars" value="' + flashVars.join('&amp;') + '" />') + '<param name="quality" value="high" />' + '<param name="bgcolor" value="#000000" />' + '<param name="wmode" value="transparent" />' + '<param name="allowScriptAccess" value="always" />' + '<param name="allowFullScreen" value="true" />' + ('<div>' + _i18n2.default.t('mejs.install-flash') + '</div>') + '</object>';
+		} else {
+
+			settings = ['id="__' + flash.id + '"', 'name="__' + flash.id + '"', 'play="true"', 'loop="false"', 'quality="high"', 'bgcolor="#000000"', 'wmode="transparent"', 'allowScriptAccess="always"', 'allowFullScreen="true"', 'type="application/x-shockwave-flash"', 'pluginspage="//www.macromedia.com/go/getflashplayer"', 'src="' + flash.options.pluginPath + flash.options.filename + '"', 'flashvars="' + flashVars.join('&') + '"', 'width="' + flashWidth + '"', 'height="' + flashHeight + '"'];
+
+			if (!isVideo) {
+				settings.push('style="clip: rect(0 0 0 0); position: absolute;"');
+			}
+
+			flash.flashWrapper.innerHTML = '<embed ' + settings.join(' ') + '>';
+		}
+
+		flash.flashNode = flash.flashWrapper.lastChild;
+
+		flash.hide = function () {
+			if (isVideo) {
+				flash.flashNode.style.position = 'absolute';
+				flash.flashNode.style.width = '1px';
+				flash.flashNode.style.height = '1px';
+				try {
+					flash.flashNode.style.clip = 'rect(0 0 0 0);';
+				} catch (e) {}
+			}
+		};
+		flash.show = function () {
+			if (isVideo) {
+				flash.flashNode.style.position = '';
+				flash.flashNode.style.width = '';
+				flash.flashNode.style.height = '';
+				try {
+					flash.flashNode.style.clip = '';
+				} catch (e) {}
+			}
+		};
+		flash.setSize = function (width, height) {
+			flash.flashNode.style.width = width + 'px';
+			flash.flashNode.style.height = height + 'px';
+
+			if (flash.flashApi !== null && typeof flash.flashApi.fire_setSize === 'function') {
+				flash.flashApi.fire_setSize(width, height);
+			}
+		};
+
+		flash.destroy = function () {
+			flash.flashNode.parentNode.removeChild(flash.flashNode);
+		};
+
+		if (mediaFiles && mediaFiles.length > 0) {
+			for (i = 0, il = mediaFiles.length; i < il; i++) {
+				if (_renderer.renderer.renderers[options.prefix].canPlayType(mediaFiles[i].type)) {
+					flash.setSrc(mediaFiles[i].src);
+					break;
+				}
+			}
+		}
+
+		return flash;
+	}
+};
+
+var hasFlash = PluginDetector.hasPluginVersion('flash', [10, 0, 0]);
+
+if (hasFlash) {
+
+	/**
+  * Register media type based on URL structure if Flash is detected
+  *
+  */
+	_media.typeChecks.push(function (url) {
+
+		url = url.toLowerCase();
+
+		if (url.startsWith('rtmp')) {
+			if (url.includes('.mp3')) {
+				return 'audio/rtmp';
+			} else {
+				return 'video/rtmp';
+			}
+		} else if (url.includes('.oga') || url.includes('.ogg')) {
+			return 'audio/ogg';
+		} else if (!_constants.HAS_MSE && !_constants.SUPPORTS_NATIVE_HLS && url.includes('.m3u8')) {
+			return 'application/x-mpegURL';
+		} else if (!_constants.HAS_MSE && url.includes('.mpd')) {
+			return 'application/dash+xml';
+		} else if (!_constants.HAS_MSE && url.includes('.flv')) {
+			return 'video/flv';
+		} else {
+			return null;
+		}
+	});
+
+	// VIDEO
+	var FlashMediaElementVideoRenderer = {
+		name: 'flash_video',
+
+		options: {
+			prefix: 'flash_video',
+			filename: 'mediaelement-flash-video.swf',
+			enablePseudoStreaming: false,
+			// start query parameter sent to server for pseudo-streaming
+			pseudoStreamingStartQueryParam: 'start',
+			// pseudo streaming type: use `time` for time based seeking (MP4) or `byte` for file byte position (FLV)
+			pseudoStreamingType: 'byte'
+		},
+		/**
+   * Determine if a specific element type can be played with this render
+   *
+   * @param {String} type
+   * @return {Boolean}
+   */
+		canPlayType: function canPlayType(type) {
+			return hasFlash && ['video/mp4', 'video/rtmp', 'audio/rtmp', 'rtmp/mp4', 'audio/mp4'].includes(type) || !_constants.HAS_MSE && hasFlash && ['video/flv', 'video/x-flv'].includes(type);
+		},
+
+		create: FlashMediaElementRenderer.create
+
+	};
+	_renderer.renderer.add(FlashMediaElementVideoRenderer);
+
+	// HLS
+	var FlashMediaElementHlsVideoRenderer = {
+		name: 'flash_hls',
+
+		options: {
+			prefix: 'flash_hls',
+			filename: 'mediaelement-flash-video-hls.swf'
+		},
+		/**
+   * Determine if a specific element type can be played with this render
+   *
+   * @param {String} type
+   * @return {Boolean}
+   */
+		canPlayType: function canPlayType(type) {
+			return !_constants.HAS_MSE && hasFlash && ['application/x-mpegurl', 'vnd.apple.mpegurl', 'audio/mpegurl', 'audio/hls', 'video/hls'].includes(type.toLowerCase());
+		},
+
+		create: FlashMediaElementRenderer.create
+	};
+	_renderer.renderer.add(FlashMediaElementHlsVideoRenderer);
+
+	// M(PEG)-DASH
+	var FlashMediaElementMdashVideoRenderer = {
+		name: 'flash_dash',
+
+		options: {
+			prefix: 'flash_dash',
+			filename: 'mediaelement-flash-video-mdash.swf'
+		},
+		/**
+   * Determine if a specific element type can be played with this render
+   *
+   * @param {String} type
+   * @return {Boolean}
+   */
+		canPlayType: function canPlayType(type) {
+			return !_constants.HAS_MSE && hasFlash && ['application/dash+xml'].includes(type);
+		},
+
+		create: FlashMediaElementRenderer.create
+	};
+	_renderer.renderer.add(FlashMediaElementMdashVideoRenderer);
+
+	// AUDIO
+	var FlashMediaElementAudioRenderer = {
+		name: 'flash_audio',
+
+		options: {
+			prefix: 'flash_audio',
+			filename: 'mediaelement-flash-audio.swf'
+		},
+		/**
+   * Determine if a specific element type can be played with this render
+   *
+   * @param {String} type
+   * @return {Boolean}
+   */
+		canPlayType: function canPlayType(type) {
+			return hasFlash && ['audio/mp3'].includes(type);
+		},
+
+		create: FlashMediaElementRenderer.create
+	};
+	_renderer.renderer.add(FlashMediaElementAudioRenderer);
+
+	// AUDIO - ogg
+	var FlashMediaElementAudioOggRenderer = {
+		name: 'flash_audio_ogg',
+
+		options: {
+			prefix: 'flash_audio_ogg',
+			filename: 'mediaelement-flash-audio-ogg.swf'
+		},
+		/**
+   * Determine if a specific element type can be played with this render
+   *
+   * @param {String} type
+   * @return {Boolean}
+   */
+		canPlayType: function canPlayType(type) {
+			return hasFlash && ['audio/ogg', 'audio/oga', 'audio/ogv'].includes(type);
+		},
+
+		create: FlashMediaElementRenderer.create
+	};
+	_renderer.renderer.add(FlashMediaElementAudioOggRenderer);
+}
+
+},{"19":19,"2":2,"20":20,"22":22,"3":3,"4":4,"6":6,"7":7}],18:[function(_dereq_,module,exports){
+'use strict';
+
+var _window = _dereq_(3);
+
+var _window2 = _interopRequireDefault(_window);
+
+var _document = _dereq_(2);
+
+var _document2 = _interopRequireDefault(_document);
+
+var _mejs = _dereq_(6);
+
+var _mejs2 = _interopRequireDefault(_mejs);
+
+var _renderer = _dereq_(7);
+
+var _dom = _dereq_(20);
+
+var _constants = _dereq_(19);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Native HTML5 Renderer
+ *
+ * Wraps the native HTML5 <audio> or <video> tag and bubbles its properties, events, and methods up to the mediaElement.
+ */
+var HtmlMediaElement = {
+
+	name: 'html5',
+
+	options: {
+		prefix: 'html5'
+	},
+
+	/**
+  * Determine if a specific element type can be played with this render
+  *
+  * @param {String} type
+  * @return {String}
+  */
+	canPlayType: function canPlayType(type) {
+
+		var mediaElement = _document2.default.createElement('video');
+
+		// Due to an issue on Webkit, force the MP3 and MP4 on Android and consider native support for HLS
+		if (_constants.IS_ANDROID && type.match(/\/mp(3|4)$/gi) !== null || ['application/x-mpegurl', 'vnd.apple.mpegurl', 'audio/mpegurl', 'audio/hls', 'video/hls'].includes(type.toLowerCase()) && _constants.SUPPORTS_NATIVE_HLS) {
+			return 'yes';
+		} else if (mediaElement.canPlayType) {
+			return mediaElement.canPlayType(type).replace(/no/, '');
+		} else {
+			return '';
+		}
+	},
+	/**
+  * Create the player instance and add all native events/methods/properties as possible
+  *
+  * @param {MediaElement} mediaElement Instance of mejs.MediaElement already created
+  * @param {Object} options All the player configuration options passed through constructor
+  * @param {Object[]} mediaFiles List of sources with format: {src: url, type: x/y-z}
+  * @return {Object}
+  */
+	create: function create(mediaElement, options, mediaFiles) {
+
+		var node = null,
+		    id = mediaElement.id + '_' + options.prefix,
+		    i = void 0,
+		    il = void 0;
+
+		// CREATE NODE
+		if (mediaElement.originalNode === undefined || mediaElement.originalNode === null) {
+			node = _document2.default.createElement('audio');
+			mediaElement.appendChild(node);
+		} else {
+			node = mediaElement.originalNode;
+		}
+
+		node.setAttribute('id', id);
+
+		// WRAPPERS for PROPs
+		var props = _mejs2.default.html5media.properties,
+		    assignGettersSetters = function assignGettersSetters(propName) {
+			var capName = '' + propName.substring(0, 1).toUpperCase() + propName.substring(1);
+
+			node['get' + capName] = function () {
+				return node[propName];
+			};
+
+			node['set' + capName] = function (value) {
+				if (!_mejs2.default.html5media.readOnlyProperties.includes(propName)) {
+					node[propName] = value;
+				}
+			};
+		};
+
+		for (i = 0, il = props.length; i < il; i++) {
+			assignGettersSetters(props[i]);
+		}
+
+		var events = _mejs2.default.html5media.events.concat(['click', 'mouseover', 'mouseout']),
+		    assignEvents = function assignEvents(eventName) {
+
+			node.addEventListener(eventName, function (e) {
+				// copy event
+
+				var event = _document2.default.createEvent('HTMLEvents');
+				event.initEvent(e.type, e.bubbles, e.cancelable);
+				// event.srcElement = e.srcElement;
+				// event.target = e.srcElement;
+				mediaElement.dispatchEvent(event);
+			});
+		};
+
+		for (i = 0, il = events.length; i < il; i++) {
+			assignEvents(events[i]);
+		}
+
+		// HELPER METHODS
+		node.setSize = function (width, height) {
+			node.style.width = width + 'px';
+			node.style.height = height + 'px';
+
+			return node;
+		};
+
+		node.hide = function () {
+			node.style.display = 'none';
+
+			return node;
+		};
+
+		node.show = function () {
+			node.style.display = '';
+
+			return node;
+		};
+
+		if (mediaFiles && mediaFiles.length > 0) {
+			for (i = 0, il = mediaFiles.length; i < il; i++) {
+				if (_renderer.renderer.renderers[options.prefix].canPlayType(mediaFiles[i].type)) {
+					node.setAttribute('src', mediaFiles[i].src);
+					break;
+				}
+			}
+		}
+
+		var event = (0, _dom.createEvent)('rendererready', node);
+		mediaElement.dispatchEvent(event);
+
+		return node;
+	}
+};
+
+_window2.default.HtmlMediaElement = _mejs2.default.HtmlMediaElement = HtmlMediaElement;
+
+_renderer.renderer.add(HtmlMediaElement);
+
+},{"19":19,"2":2,"20":20,"3":3,"6":6,"7":7}],19:[function(_dereq_,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.cancelFullScreen = exports.requestFullScreen = exports.isFullScreen = exports.FULLSCREEN_EVENT_NAME = exports.HAS_NATIVE_FULLSCREEN_ENABLED = exports.HAS_TRUE_NATIVE_FULLSCREEN = exports.HAS_IOS_FULLSCREEN = exports.HAS_MS_NATIVE_FULLSCREEN = exports.HAS_MOZ_NATIVE_FULLSCREEN = exports.HAS_WEBKIT_NATIVE_FULLSCREEN = exports.HAS_NATIVE_FULLSCREEN = exports.SUPPORTS_NATIVE_HLS = exports.SUPPORTS_MEDIA_TAG = exports.SUPPORT_POINTER_EVENTS = exports.HAS_MSE = exports.IS_STOCK_ANDROID = exports.IS_SAFARI = exports.IS_FIREFOX = exports.IS_CHROME = exports.IS_EDGE = exports.IS_IE = exports.IS_ANDROID = exports.IS_IOS = exports.IS_IPHONE = exports.IS_IPAD = exports.UA = exports.NAV = undefined;
+
+var _window = _dereq_(3);
+
+var _window2 = _interopRequireDefault(_window);
+
+var _document = _dereq_(2);
+
+var _document2 = _interopRequireDefault(_document);
+
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -5130,12 +5966,12 @@ var IS_IPHONE = exports.IS_IPHONE = UA.match(/iphone/i) !== null;
 var IS_IOS = exports.IS_IOS = IS_IPHONE || IS_IPAD;
 var IS_ANDROID = exports.IS_ANDROID = UA.match(/android/i) !== null;
 var IS_IE = exports.IS_IE = NAV.appName.toLowerCase().includes('microsoft') || NAV.appName.toLowerCase().match(/trident/gi) !== null;
+var IS_EDGE = exports.IS_EDGE = 'msLaunchUri' in NAV && !('documentMode' in _document2.default);
 var IS_CHROME = exports.IS_CHROME = UA.match(/chrome/gi) !== null;
 var IS_FIREFOX = exports.IS_FIREFOX = UA.match(/firefox/gi) !== null;
 var IS_SAFARI = exports.IS_SAFARI = UA.match(/safari/gi) !== null && !IS_CHROME;
 var IS_STOCK_ANDROID = exports.IS_STOCK_ANDROID = UA.match(/^mozilla\/\d+\.\d+\s\(linux;\su;/gi) !== null;
 
-var HAS_TOUCH = exports.HAS_TOUCH = !!('ontouchstart' in _window2.default || _window2.default.DocumentTouch && _document2.default instanceof _window2.default.DocumentTouch);
 var HAS_MSE = exports.HAS_MSE = 'MediaSource' in _window2.default;
 var SUPPORT_POINTER_EVENTS = exports.SUPPORT_POINTER_EVENTS = function () {
 	var element = _document2.default.createElement('x'),
@@ -5269,11 +6105,11 @@ _mejs2.default.Features.isiPhone = IS_IPHONE;
 _mejs2.default.Features.isiOS = _mejs2.default.Features.isiPhone || _mejs2.default.Features.isiPad;
 _mejs2.default.Features.isAndroid = IS_ANDROID;
 _mejs2.default.Features.isIE = IS_IE;
+_mejs2.default.Features.isEdge = IS_EDGE;
 _mejs2.default.Features.isChrome = IS_CHROME;
 _mejs2.default.Features.isFirefox = IS_FIREFOX;
 _mejs2.default.Features.isSafari = IS_SAFARI;
 _mejs2.default.Features.isStockAndroid = IS_STOCK_ANDROID;
-_mejs2.default.Features.hasTouch = HAS_TOUCH;
 _mejs2.default.Features.hasMSE = HAS_MSE;
 _mejs2.default.Features.supportsMediaTag = SUPPORTS_MEDIA_TAG;
 _mejs2.default.Features.supportsNativeHLS = SUPPORTS_NATIVE_HLS;
@@ -5291,7 +6127,7 @@ _mejs2.default.Features.isFullScreen = isFullScreen;
 _mejs2.default.Features.requestFullScreen = requestFullScreen;
 _mejs2.default.Features.cancelFullScreen = cancelFullScreen;
 
-},{"../core/mejs":6,"global/document":2,"global/window":3}],18:[function(require,module,exports){
+},{"2":2,"3":3,"6":6}],20:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5302,11 +6138,11 @@ exports.addEvent = addEvent;
 exports.removeEvent = removeEvent;
 exports.isNodeAfter = isNodeAfter;
 
-var _document = require('global/document');
+var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = require('../core/mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -5388,7 +6224,7 @@ _mejs2.default.Utils.createEvent = createEvent;
 _mejs2.default.Utils.removeEvent = removeEvent;
 _mejs2.default.Utils.isNodeAfter = isNodeAfter;
 
-},{"../core/mejs":6,"global/document":2}],19:[function(require,module,exports){
+},{"2":2,"6":6}],21:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5400,11 +6236,11 @@ exports.isObjectEmpty = isObjectEmpty;
 exports.splitEvents = splitEvents;
 exports.getElementsByClassName = getElementsByClassName;
 
-var _document = require('global/document');
+var _document = _dereq_(2);
 
 var _document2 = _interopRequireDefault(_document);
 
-var _mejs = require('../core/mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -5545,7 +6381,7 @@ _mejs2.default.Utils.isObjectEmpty = isObjectEmpty;
 _mejs2.default.Utils.splitEvents = splitEvents;
 _mejs2.default.Utils.getElementsByClassName = getElementsByClassName;
 
-},{"../core/mejs":6,"global/document":2}],20:[function(require,module,exports){
+},{"2":2,"6":6}],22:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5559,11 +6395,11 @@ exports.getTypeFromFile = getTypeFromFile;
 exports.getExtension = getExtension;
 exports.normalizeExtension = normalizeExtension;
 
-var _mejs = require('../core/mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
-var _general = require('./general');
+var _general = _dereq_(21);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5715,7 +6551,216 @@ _mejs2.default.Utils.getTypeFromFile = getTypeFromFile;
 _mejs2.default.Utils.getExtension = getExtension;
 _mejs2.default.Utils.normalizeExtension = normalizeExtension;
 
-},{"../core/mejs":6,"./general":19}],21:[function(require,module,exports){
+},{"21":21,"6":6}],23:[function(_dereq_,module,exports){
+'use strict';
+
+var _document = _dereq_(2);
+
+var _document2 = _interopRequireDefault(_document);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Polyfill
+ *
+ * Mimics the missing methods like Object.assign, Array.includes, etc., as a way to avoid including the whole list
+ * of polyfills provided by Babel.
+ */
+
+// IE6,7,8
+// Production steps of ECMA-262, Edition 5, 15.4.4.14
+// Reference: http://es5.github.io/#x15.4.4.14
+if (!Array.prototype.indexOf) {
+	Array.prototype.indexOf = function (searchElement, fromIndex) {
+
+		var k = void 0;
+
+		// 1. Let O be the result of calling ToObject passing
+		//	   the this value as the argument.
+		if (undefined === undefined || undefined === null) {
+			throw new TypeError('"this" is null or not defined');
+		}
+
+		var O = Object(undefined);
+
+		// 2. Let lenValue be the result of calling the Get
+		//	   internal method of O with the argument "length".
+		// 3. Let len be ToUint32(lenValue).
+		var len = O.length >>> 0;
+
+		// 4. If len is 0, return -1.
+		if (len === 0) {
+			return -1;
+		}
+
+		// 5. If argument fromIndex was passed let n be
+		//	   ToInteger(fromIndex); else let n be 0.
+		var n = +fromIndex || 0;
+
+		if (Math.abs(n) === Infinity) {
+			n = 0;
+		}
+
+		// 6. If n >= len, return -1.
+		if (n >= len) {
+			return -1;
+		}
+
+		// 7. If n >= 0, then Let k be n.
+		// 8. Else, n<0, Let k be len - abs(n).
+		//	   If k is less than 0, then let k be 0.
+		k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+		// 9. Repeat, while k < len
+		while (k < len) {
+			// a. Let Pk be ToString(k).
+			//   This is implicit for LHS operands of the in operator
+			// b. Let kPresent be the result of calling the
+			//	HasProperty internal method of O with argument Pk.
+			//   This step can be combined with c
+			// c. If kPresent is true, then
+			//	i.	Let elementK be the result of calling the Get
+			//		internal method of O with the argument ToString(k).
+			//   ii.	Let same be the result of applying the
+			//		Strict Equality Comparison Algorithm to
+			//		searchElement and elementK.
+			//  iii.	If same is true, return k.
+			if (k in O && O[k] === searchElement) {
+				return k;
+			}
+			k++;
+		}
+		return -1;
+	};
+}
+
+// document.createEvent for IE8 or other old browsers that do not implement it
+// Reference: https://github.com/WebReflection/ie8/blob/master/build/ie8.max.js
+if (_document2.default.createEvent === undefined) {
+	_document2.default.createEvent = function () {
+
+		var e = void 0;
+
+		e = _document2.default.createEventObject();
+		e.timeStamp = new Date().getTime();
+		e.enumerable = true;
+		e.writable = true;
+		e.configurable = true;
+
+		e.initEvent = function (type, bubbles, cancelable) {
+			undefined.type = type;
+			undefined.bubbles = !!bubbles;
+			undefined.cancelable = !!cancelable;
+			if (!undefined.bubbles) {
+				undefined.stopPropagation = function () {
+					undefined.stoppedPropagation = true;
+					undefined.cancelBubble = true;
+				};
+			}
+		};
+
+		return e;
+	};
+}
+
+// Object.assign polyfill
+// Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Polyfill
+if (typeof Object.assign !== 'function') {
+	Object.assign = function (target, varArgs) {
+		// .length of function is 2
+
+		'use strict';
+
+		if (target === null || target === undefined) {
+			// TypeError if undefined or null
+			throw new TypeError('Cannot convert undefined or null to object');
+		}
+
+		var to = Object(target);
+
+		for (var index = 1; index < arguments.length; index++) {
+			var nextSource = arguments[index];
+
+			if (nextSource !== null) {
+				// Skip over if undefined or null
+				for (var nextKey in nextSource) {
+					// Avoid bugs when hasOwnProperty is shadowed
+					if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+						to[nextKey] = nextSource[nextKey];
+					}
+				}
+			}
+		}
+		return to;
+	};
+}
+
+// Array.includes polyfill
+// Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill
+if (!Array.prototype.includes) {
+	Object.defineProperty(Array.prototype, 'includes', {
+		value: function value(searchElement, fromIndex) {
+
+			// 1. Let O be ? ToObject(this value).
+			if (this === null || this === undefined) {
+				throw new TypeError('"this" is null or not defined');
+			}
+
+			var o = Object(this);
+
+			// 2. Let len be ? ToLength(? Get(O, "length")).
+			var len = o.length >>> 0;
+
+			// 3. If len is 0, return false.
+			if (len === 0) {
+				return false;
+			}
+
+			// 4. Let n be ? ToInteger(fromIndex).
+			//    (If fromIndex is undefined, this step produces the value 0.)
+			var n = fromIndex | 0;
+
+			// 5. If n ≥ 0, then
+			//  a. Let k be n.
+			// 6. Else n < 0,
+			//  a. Let k be len + n.
+			//  b. If k < 0, let k be 0.
+			var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+			// 7. Repeat, while k < len
+			while (k < len) {
+				// a. Let elementK be the result of ? Get(O, ! ToString(k)).
+				// b. If SameValueZero(searchElement, elementK) is true, return true.
+				// c. Increase k by 1.
+				// NOTE: === provides the correct "SameValueZero" comparison needed here.
+				if (o[k] === searchElement) {
+					return true;
+				}
+				k++;
+			}
+
+			// 8. Return false
+			return false;
+		}
+	});
+}
+
+if (!String.prototype.includes) {
+	String.prototype.includes = function () {
+		return String.prototype.indexOf.apply(this, arguments) !== -1;
+	};
+}
+
+// String.startsWith polyfill
+// Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith#Polyfill
+if (!String.prototype.startsWith) {
+	String.prototype.startsWith = function (searchString, position) {
+		position = position || 0;
+		return this.substr(position, searchString.length) === searchString;
+	};
+}
+
+},{"2":2}],24:[function(_dereq_,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -5726,7 +6771,7 @@ exports.timeCodeToSeconds = timeCodeToSeconds;
 exports.calculateTimeFormat = calculateTimeFormat;
 exports.convertSMPTEtoSeconds = convertSMPTEtoSeconds;
 
-var _mejs = require('../core/mejs');
+var _mejs = _dereq_(6);
 
 var _mejs2 = _interopRequireDefault(_mejs);
 
@@ -5910,4 +6955,4 @@ _mejs2.default.Utils.timeCodeToSeconds = timeCodeToSeconds;
 _mejs2.default.Utils.calculateTimeFormat = calculateTimeFormat;
 _mejs2.default.Utils.convertSMPTEtoSeconds = convertSMPTEtoSeconds;
 
-},{"../core/mejs":6}]},{},[15,16,8,9,10,11,12,13]);
+},{"6":6}]},{},[23,5,4,14,18,17,15,16,8,9,10,11,12,13]);
