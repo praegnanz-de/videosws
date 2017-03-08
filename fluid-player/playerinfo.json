@@ -1,0 +1,40 @@
+{
+  "name": "Fluid Player",
+  "version": "1.0.1",
+  "url": "https://github.com/fluid-player/fluid-player",
+  "description": "Fluid Player is a new free HTML5 video player. It is lightweight, easy to integrate and has advanced VAST* capabilities",
+  "pricing": {
+    "once": false,
+    "subscription": false,
+    "freeAvailable": true
+  },
+  "license": "mit",
+  "library": [],
+  "hosted": "false",
+  "repository": "https://github.com/fluid-player/fluid-player",
+  "example": {
+    "css": "vast.ss",
+    "jsHead": "vast.js"
+  },
+  "flags": {
+    "flash": false,
+    "api": false,
+    "unifiedAPI": false,
+    "fullscreen": true,
+    "keyboard": false,
+    "subtitles": false,
+    "chapters": false,
+    "playlists": false,
+    "responsive": true,
+    "embeddable": true,
+    "cms": [],
+    "services": [],
+    "skinnable": true,
+    "audioOnly": false,
+    "speedControl": false,
+    "qualityControl": false,
+    "aria": false,
+    "hls": true,
+    "dash": false
+  }
+}
