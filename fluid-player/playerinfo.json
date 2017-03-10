@@ -10,7 +10,7 @@
   },
   "license": "mit",
   "library": [],
-  "hosted": "false",
+  "hosted": false,
   "repository": "https://github.com/fluid-player/fluid-player",
   "example": {
     "css": "vast.ss",
