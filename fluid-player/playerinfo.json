@@ -13,7 +13,7 @@
   "hosted": false,
   "repository": "https://github.com/fluid-player/fluid-player",
   "example": {
-    "css": "vast.ss",
+    "css": "vast.css",
     "jsHead": "vast.js"
   },
   "flags": {
