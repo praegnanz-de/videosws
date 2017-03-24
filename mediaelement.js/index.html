@@ -1,4 +1,4 @@
-<video id="demo" width="640" height="360" style="max-width:100%;" poster="{{player.poster}}" controls="controls" preload="none">
+<video id="demo" width="640" height="360" style="max-width:100%;" poster="{{player.poster}}" controls preload="none">
     <!-- M(PEG)-DASH using plugin -->
     <source type="application/dash+xml" src="{{player.video.dash}}" />
     <!-- HLS supported natively by Safari Desktop, MS Edge, iPhone, iPad, and Android 4+ -->
@@ -20,7 +20,7 @@
 </video>
 
 <script>
-    $(function(){
-      $('#demo').mediaelementplayer();
+    document.addEventListener('DOMContentLoaded', function() {
+        new MediaElementPlayer('demo');
     });
 </script>
