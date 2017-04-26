@@ -1,0 +1,17 @@
+<video id='my-video' controls>
+    <source src='{{player.video.mp4}}' type='video/mp4' />
+</video>
+
+<script type="text/javascript">
+var testVideo = fluidPlayer(
+	'my-video',
+	'{{player.vast.xml}}',
+	{
+		timelinePreview: {
+			file: '{{player.thumbnails.vtt}}',
+			type: 'VTT'
+		},
+		layout: 'default',
+	}
+);
+</script>
