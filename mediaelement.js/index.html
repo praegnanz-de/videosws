@@ -13,6 +13,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        new MediaElementPlayer('demo');
+        new MediaElementPlayer('demo', {
+            renderers: ['native_dash', 'native_hls', 'html5', 'flash_dash', 'flash_hls', 'flash_video']
+        });
     });
 </script>
