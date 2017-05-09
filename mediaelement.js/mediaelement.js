@@ -463,12 +463,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * This class is the foundation to create/render different media formats.
  * @class MediaElement
  */
-var MediaElement = function MediaElement(idOrNode, options) {
+var MediaElement =
+
+/**
+ *
+ * @param {String|Node} idOrNode
+ * @param {Object} options
+ * @param {Object[]} sources
+ * @returns {Element|*}
+ */
+function MediaElement(idOrNode, options, sources) {
 	var _this = this;
 
 	_classCallCheck(this, MediaElement);
 
 	var t = this;
+
+	sources = Array.isArray(sources) ? sources : null;
 
 	t.defaults = {
 		/**
@@ -684,22 +695,20 @@ var MediaElement = function MediaElement(idOrNode, options) {
 	},
 	    assignGettersSetters = function assignGettersSetters(propName) {
 		if (propName !== 'src') {
-			(function () {
 
-				var capName = '' + propName.substring(0, 1).toUpperCase() + propName.substring(1),
-				    getFn = function getFn() {
-					return t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null ? t.mediaElement.renderer['get' + capName]() : null;
-				},
-				    setFn = function setFn(value) {
-					if (t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null) {
-						t.mediaElement.renderer['set' + capName](value);
-					}
-				};
+			var capName = '' + propName.substring(0, 1).toUpperCase() + propName.substring(1),
+			    getFn = function getFn() {
+				return t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null ? t.mediaElement.renderer['get' + capName]() : null;
+			},
+			    setFn = function setFn(value) {
+				if (t.mediaElement.renderer !== undefined && t.mediaElement.renderer !== null) {
+					t.mediaElement.renderer['set' + capName](value);
+				}
+			};
 
-				addProperty(t.mediaElement, propName, getFn, setFn);
-				t.mediaElement['get' + capName] = getFn;
-				t.mediaElement['set' + capName] = setFn;
-			})();
+			addProperty(t.mediaElement, propName, getFn, setFn);
+			t.mediaElement['get' + capName] = getFn;
+			t.mediaElement['set' + capName] = setFn;
 		}
 	},
 
@@ -855,8 +864,13 @@ var MediaElement = function MediaElement(idOrNode, options) {
 		}
 	};
 
-	if (t.mediaElement.originalNode !== null) {
-		var mediaFiles = [];
+	var mediaFiles = void 0;
+
+	if (sources !== null) {
+		mediaFiles = sources;
+	} else if (t.mediaElement.originalNode !== null) {
+
+		mediaFiles = [];
 
 		switch (t.mediaElement.originalNode.nodeName.toLowerCase()) {
 
@@ -870,10 +884,7 @@ var MediaElement = function MediaElement(idOrNode, options) {
 
 			case 'audio':
 			case 'video':
-				var n = void 0,
-				    src = void 0,
-				    type = void 0,
-				    sources = t.mediaElement.originalNode.childNodes.length,
+				var _sources = t.mediaElement.originalNode.childNodes.length,
 				    nodeSource = t.mediaElement.originalNode.getAttribute('src');
 
 				// Consider if node contains the `src` and `type` attributes
@@ -886,20 +897,21 @@ var MediaElement = function MediaElement(idOrNode, options) {
 				}
 
 				// test <source> types to see if they are usable
-				for (var _i4 = 0; _i4 < sources; _i4++) {
-					n = t.mediaElement.originalNode.childNodes[_i4];
+				for (var _i4 = 0; _i4 < _sources; _i4++) {
+					var n = t.mediaElement.originalNode.childNodes[_i4];
 					if (n.nodeType === Node.ELEMENT_NODE && n.tagName.toLowerCase() === 'source') {
-						src = n.getAttribute('src');
-						type = (0, _media.formatType)(src, n.getAttribute('type'));
+						var src = n.getAttribute('src'),
+						    type = (0, _media.formatType)(src, n.getAttribute('type'));
 						mediaFiles.push({ type: type, src: src });
 					}
 				}
 				break;
 		}
+	}
 
-		if (mediaFiles.length > 0) {
-			t.mediaElement.src = mediaFiles;
-		}
+	// Set the best match based on renderers
+	if (mediaFiles.length) {
+		t.mediaElement.src = mediaFiles;
 	}
 
 	if (t.mediaElement.options.success) {
@@ -934,7 +946,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mejs = {};
 
 // version number
-mejs.version = '4.0.2';
+mejs.version = '4.1.0';
 
 // Basic HTML5 settings
 mejs.html5media = {
@@ -1046,21 +1058,19 @@ var Renderer = function () {
 			// 2) Flash shims (RTMP, FLV, HLS, M(PEG)-DASH, MP3, OGG)
 			// 3) Iframe renderers (YouTube, SoundCloud, Facebook. etc.)
 			if (!renderersLength) {
-				(function () {
-					var rendererIndicator = [/^(html5|native)/, /^flash/, /iframe$/],
-					    rendererRanking = function rendererRanking(renderer) {
-						for (var i = 0, total = rendererIndicator.length; i < total; i++) {
-							if (renderer.match(rendererIndicator[i]) !== null) {
-								return i;
-							}
+				var rendererIndicator = [/^(html5|native)/, /^flash/, /iframe$/],
+				    rendererRanking = function rendererRanking(renderer) {
+					for (var i = 0, total = rendererIndicator.length; i < total; i++) {
+						if (renderer.match(rendererIndicator[i]) !== null) {
+							return i;
 						}
-						return rendererIndicator.length;
-					};
+					}
+					return rendererIndicator.length;
+				};
 
-					renderers.sort(function (a, b) {
-						return rendererRanking(a) - rendererRanking(b);
-					});
-				})();
+				renderers.sort(function (a, b) {
+					return rendererRanking(a) - rendererRanking(b);
+				});
 			}
 
 			for (var i = 0, total = renderers.length; i < total; i++) {
@@ -1298,30 +1308,28 @@ var NativeDash = {
 		if (typeof dashjs !== 'undefined') {
 			NativeDash.createInstance(settings);
 		} else if (!NativeDash.isScriptLoaded) {
-			(function () {
 
-				settings.options.path = typeof settings.options.path === 'string' ? settings.options.path : '//cdn.dashjs.org/latest/dash.mediaplayer.min.js';
+			settings.options.path = typeof settings.options.path === 'string' ? settings.options.path : '//cdn.dashjs.org/latest/dash.mediaplayer.min.js';
 
-				var script = _document2.default.createElement('script'),
-				    firstScriptTag = _document2.default.getElementsByTagName('script')[0];
+			var script = _document2.default.createElement('script'),
+			    firstScriptTag = _document2.default.getElementsByTagName('script')[0];
 
-				var done = false;
+			var done = false;
 
-				script.src = settings.options.path;
+			script.src = settings.options.path;
 
-				// Attach handlers for all browsers
-				script.onload = script.onreadystatechange = function () {
-					if (!done && (!this.readyState || this.readyState === undefined || this.readyState === 'loaded' || this.readyState === 'complete')) {
-						done = true;
-						NativeDash.mediaReady();
-						script.onload = script.onreadystatechange = null;
-					}
-				};
+			// Attach handlers for all browsers
+			script.onload = script.onreadystatechange = function () {
+				if (!done && (!this.readyState || this.readyState === undefined || this.readyState === 'loaded' || this.readyState === 'complete')) {
+					done = true;
+					NativeDash.mediaReady();
+					script.onload = script.onreadystatechange = null;
+				}
+			};
 
-				firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+			firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
 
-				NativeDash.isScriptLoaded = true;
-			})();
+			NativeDash.isScriptLoaded = true;
 		}
 	},
 
@@ -1441,8 +1449,7 @@ var DashNativeRenderer = {
 				}
 
 				node.addEventListener(eventName, function (e) {
-					var event = _document2.default.createEvent('HTMLEvents');
-					event.initEvent(e.type, e.bubbles, e.cancelable);
+					var event = (0, _general.createEvent)(e.type, mediaElement);
 					mediaElement.dispatchEvent(event);
 				});
 			};
@@ -1705,30 +1712,22 @@ var FlashMediaElementRenderer = {
 				if (flash.flashApi !== null) {
 
 					if (flash.flashApi['get_' + propName] !== undefined) {
-						var _ret = function () {
-							var value = flash.flashApi['get_' + propName]();
+						var value = flash.flashApi['get_' + propName]();
 
-							// special case for buffered to conform to HTML5's newest
-							if (propName === 'buffered') {
-								return {
-									v: {
-										start: function start() {
-											return 0;
-										},
-										end: function end() {
-											return value;
-										},
-										length: 1
-									}
-								};
-							}
-
+						// special case for buffered to conform to HTML5's newest
+						if (propName === 'buffered') {
 							return {
-								v: value
+								start: function start() {
+									return 0;
+								},
+								end: function end() {
+									return value;
+								},
+								length: 1
 							};
-						}();
+						}
 
-						if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+						return value;
 					} else {
 						return null;
 					}
@@ -1794,7 +1793,7 @@ var FlashMediaElementRenderer = {
 		}
 
 		// give initial events like in others renderers
-		var initEvents = ['rendererready', 'loadeddata', 'loadedmetadata', 'canplay', 'error'];
+		var initEvents = ['rendererready'];
 
 		for (var _i2 = 0, _total2 = initEvents.length; _i2 < _total2; _i2++) {
 			var event = (0, _general.createEvent)(initEvents[_i2], flash);
@@ -1891,26 +1890,12 @@ var FlashMediaElementRenderer = {
 
 		flash.hide = function () {
 			if (isVideo) {
-				flash.flashNode.style.position = 'absolute';
-				flash.flashNode.style.width = '1px';
-				flash.flashNode.style.height = '1px';
-				try {
-					flash.flashNode.style.clip = 'rect(0 0 0 0);';
-				} catch (e) {
-					
-				}
+				flash.flashNode.style.display = 'none';
 			}
 		};
 		flash.show = function () {
 			if (isVideo) {
-				flash.flashNode.style.position = '';
-				flash.flashNode.style.width = '';
-				flash.flashNode.style.height = '';
-				try {
-					flash.flashNode.style.clip = '';
-				} catch (e) {
-					
-				}
+				flash.flashNode.style.display = '';
 			}
 		};
 		flash.setSize = function (width, height) {
@@ -2160,29 +2145,27 @@ var NativeFlv = {
 		if (typeof flvjs !== 'undefined') {
 			NativeFlv.createInstance(settings);
 		} else if (!NativeFlv.isMediaStarted) {
-			(function () {
 
-				settings.options.path = typeof settings.options.path === 'string' ? settings.options.path : '//cdnjs.cloudflare.com/ajax/libs/flv.js/1.1.0/flv.min.js';
+			settings.options.path = typeof settings.options.path === 'string' ? settings.options.path : '//cdnjs.cloudflare.com/ajax/libs/flv.js/1.2.0/flv.min.js';
 
-				var script = _document2.default.createElement('script'),
-				    firstScriptTag = _document2.default.getElementsByTagName('script')[0];
+			var script = _document2.default.createElement('script'),
+			    firstScriptTag = _document2.default.getElementsByTagName('script')[0];
 
-				var done = false;
+			var done = false;
 
-				script.src = settings.options.path;
+			script.src = settings.options.path;
 
-				// Attach handlers for all browsers
-				script.onload = script.onreadystatechange = function () {
-					if (!done && (!this.readyState || this.readyState === undefined || this.readyState === 'loaded' || this.readyState === 'complete')) {
-						done = true;
-						NativeFlv.mediaReady();
-						script.onload = script.onreadystatechange = null;
-					}
-				};
+			// Attach handlers for all browsers
+			script.onload = script.onreadystatechange = function () {
+				if (!done && (!this.readyState || this.readyState === undefined || this.readyState === 'loaded' || this.readyState === 'complete')) {
+					done = true;
+					NativeFlv.mediaReady();
+					script.onload = script.onreadystatechange = null;
+				}
+			};
 
-				firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
-				NativeFlv.isMediaStarted = true;
-			})();
+			firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+			NativeFlv.isMediaStarted = true;
 		}
 	},
 
@@ -2218,7 +2201,7 @@ var FlvNativeRenderer = {
 		prefix: 'native_flv',
 		flv: {
 			// Special config: used to set the local path/URL of flv.js library
-			path: '//cdnjs.cloudflare.com/ajax/libs/flv.js/1.1.0/flv.min.js',
+			path: '//cdnjs.cloudflare.com/ajax/libs/flv.js/1.2.0/flv.min.js',
 			// To modify more elements from FLV player,
 			// see https://github.com/Bilibili/flv.js/blob/master/docs/api.md#config
 			cors: true
@@ -2298,8 +2281,7 @@ var FlvNativeRenderer = {
 				}
 
 				node.addEventListener(eventName, function (e) {
-					var event = _document2.default.createEvent('HTMLEvents');
-					event.initEvent(e.type, e.bubbles, e.cancelable);
+					var event = (0, _general.createEvent)(e.type, mediaElement);
 					mediaElement.dispatchEvent(event);
 				});
 			};
@@ -2450,29 +2432,27 @@ var NativeHls = {
 		if (typeof Hls !== 'undefined') {
 			NativeHls.createInstance(settings);
 		} else if (!NativeHls.isMediaStarted) {
-			(function () {
 
-				settings.options.path = typeof settings.options.path === 'string' ? settings.options.path : '//cdn.jsdelivr.net/hls.js/latest/hls.min.js';
+			settings.options.path = typeof settings.options.path === 'string' ? settings.options.path : '//cdn.jsdelivr.net/hls.js/latest/hls.min.js';
 
-				var script = _document2.default.createElement('script'),
-				    firstScriptTag = _document2.default.getElementsByTagName('script')[0];
+			var script = _document2.default.createElement('script'),
+			    firstScriptTag = _document2.default.getElementsByTagName('script')[0];
 
-				var done = false;
+			var done = false;
 
-				script.src = settings.options.path;
+			script.src = settings.options.path;
 
-				// Attach handlers for all browsers
-				script.onload = script.onreadystatechange = function () {
-					if (!done && (!this.readyState || this.readyState === undefined || this.readyState === 'loaded' || this.readyState === 'complete')) {
-						done = true;
-						NativeHls.mediaReady();
-						script.onload = script.onreadystatechange = null;
-					}
-				};
+			// Attach handlers for all browsers
+			script.onload = script.onreadystatechange = function () {
+				if (!done && (!this.readyState || this.readyState === undefined || this.readyState === 'loaded' || this.readyState === 'complete')) {
+					done = true;
+					NativeHls.mediaReady();
+					script.onload = script.onreadystatechange = null;
+				}
+			};
 
-				firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
-				NativeHls.isMediaStarted = true;
-			})();
+			firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+			NativeHls.isMediaStarted = true;
 		}
 	},
 
@@ -2595,18 +2575,15 @@ var HlsNativeRenderer = {
 
 				if (eventName === 'loadedmetadata') {
 
+					var url = mediaElement.originalNode.src;
 					hlsPlayer.detachMedia();
-
-					var url = node.src;
-
 					hlsPlayer.loadSource(url);
 					hlsPlayer.attachMedia(node);
 				}
 
 				node.addEventListener(eventName, function (e) {
 					// copy event
-					var event = _document2.default.createEvent('HTMLEvents');
-					event.initEvent(e.type, e.bubbles, e.cancelable);
+					var event = (0, _general.createEvent)(e.type, mediaElement);
 					mediaElement.dispatchEvent(event);
 				});
 			};
@@ -2859,8 +2836,7 @@ var HtmlMediaElement = {
 			node.addEventListener(eventName, function (e) {
 				// copy event
 
-				var event = _document2.default.createEvent('HTMLEvents');
-				event.initEvent(e.type, e.bubbles, e.cancelable);
+				var event = (0, _general.createEvent)(e.type, mediaElement);
 				mediaElement.dispatchEvent(event);
 			});
 		};
@@ -3179,67 +3155,45 @@ var YouTubeIframeRenderer = {
 					var value = null;
 
 					// figure out how to get youtube dta here
+					switch (propName) {
+						case 'currentTime':
+							return youTubeApi.getCurrentTime();
 
-					var _ret = function () {
-						switch (propName) {
-							case 'currentTime':
-								return {
-									v: youTubeApi.getCurrentTime()
-								};
+						case 'duration':
+							return youTubeApi.getDuration();
 
-							case 'duration':
-								return {
-									v: youTubeApi.getDuration()
-								};
+						case 'volume':
+							volume = youTubeApi.getVolume() / 100;
+							return volume;
 
-							case 'volume':
-								volume = youTubeApi.getVolume() / 100;
-								return {
-									v: volume
-								};
+						case 'paused':
+							return paused;
 
-							case 'paused':
-								return {
-									v: paused
-								};
+						case 'ended':
+							return ended;
 
-							case 'ended':
-								return {
-									v: ended
-								};
+						case 'muted':
+							return youTubeApi.isMuted();
 
-							case 'muted':
-								return {
-									v: youTubeApi.isMuted()
-								};
+						case 'buffered':
+							var percentLoaded = youTubeApi.getVideoLoadedFraction(),
+							    duration = youTubeApi.getDuration();
+							return {
+								start: function start() {
+									return 0;
+								},
+								end: function end() {
+									return percentLoaded * duration;
+								},
+								length: 1
+							};
+						case 'src':
+							return youTubeApi.getVideoUrl();
 
-							case 'buffered':
-								var percentLoaded = youTubeApi.getVideoLoadedFraction(),
-								    duration = youTubeApi.getDuration();
-								return {
-									v: {
-										start: function start() {
-											return 0;
-										},
-										end: function end() {
-											return percentLoaded * duration;
-										},
-										length: 1
-									}
-								};
-							case 'src':
-								return {
-									v: youTubeApi.getVideoUrl()
-								};
+						case 'readyState':
+							return readyState;
+					}
 
-							case 'readyState':
-								return {
-									v: readyState
-								};
-						}
-					}();
-
-					if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
 					return value;
 				} else {
 					return null;
@@ -4297,5 +4251,15 @@ if (window.Element && !Element.prototype.closest) {
 		clearTimeout(id);
 	};
 })();
+
+// Javascript workaround for FF iframe `getComputedStyle` bug
+// Reference: https://stackoverflow.com/questions/32659801/javascript-workaround-for-firefox-iframe-getcomputedstyle-bug/32660009#32660009
+if (/firefox/i.test(navigator.userAgent)) {
+	window.oldGetComputedStyle = window.getComputedStyle;
+	window.getComputedStyle = function (el, pseudoEl) {
+		var t = window.oldGetComputedStyle(el, pseudoEl);
+		return t === null ? { getPropertyValue: function getPropertyValue() {} } : t;
+	};
+}
 
 },{"2":2}]},{},[18,5,4,8,13,10,9,11,12,14]);
