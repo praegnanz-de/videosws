@@ -1,8 +1,8 @@
 {
   "name": "mediaelement.js",
-  "version": "4.1.2",
+  "version": "4.2.2",
   "url": "http://mediaelementjs.com/",
-  "description": "Our personal favorite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API. Currently supports MP4, MP3, HLS, M(PEG)-DASH, Soundcloud, Facebook, Twitch, Dailymotion, YouTube, Vimeo and FLV. It is part of WordPress core.",
+  "description": "Our personal favorite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API. Currently supports MP4, MP3, HLS, M(PEG)-DASH, Soundcloud, Facebook, Twitch, Dailymotion, YouTube, Vimeo and FLV. It is part of WordPress core. More plugins (Chromecast, Quality Chooser, Google Analytics, etc.) available at https://github.com/mediaelement/mediaelement-plugins",
   "repository": "http://github.com/mediaelement/mediaelement/",
   "license": "mit",
   "pricing": {
@@ -35,7 +35,7 @@
     "skinnable": true,
     "audioOnly": true,
     "speedControl": true,
-    "qualityControl": false,
+    "qualityControl": true,
     "aria": true,
     "hls": true,
     "dash": true
