@@ -1,21 +1,21 @@
 {
   "name": "mediaelement.js",
-  "version": "3.1.2",
+  "version": "4.1.2",
   "url": "http://mediaelementjs.com/",
-  "description": "Our personal favourite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API.",
-  "repository": "http://github.com/johndyer/mediaelement/",
+  "description": "Our personal favorite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API. Currently supports MP4, MP3, HLS, M(PEG)-DASH, Soundcloud, Facebook, Twitch, Dailymotion, YouTube, Vimeo and FLV. It is part of WordPress core.",
+  "repository": "http://github.com/mediaelement/mediaelement/",
   "license": "mit",
   "pricing": {
     "once": false,
     "subscription": false,
     "freeAvailable": true
   },
-  "library": ["jquery"],
+  "library": [],
   "hosted": "possible",
 
   "example": {
     "css": ["mediaelementplayer.css"],
-    "jsHead": ["jquery.js", "mediaelement-and-player.min.js"]
+    "jsHead": ["mediaelement-and-player.min.js"]
   },
 
   "flags": {
