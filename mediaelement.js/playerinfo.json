@@ -27,7 +27,7 @@
     "keyboard": true,
     "subtitles": true,
     "chapters": true,
-    "playlists": false,
+    "playlists": true,
     "responsive": true,
     "embeddable": false,
     "cms": ["wordpress", "drupal", "joomla", "typo3", "contao"],
