@@ -1,6 +1,6 @@
 {
   "name": "mediaelement.js",
-  "version": "4.2.4",
+  "version": "4.2.5",
   "url": "http://mediaelementjs.com/",
   "description": "Our personal favorite. Sports the right balance between mighty API and simple usage. Very clever Flash fallback with unified API. Currently supports MP4, MP3, HLS, M(PEG)-DASH, Soundcloud, Facebook, Twitch, Dailymotion, YouTube, Vimeo and FLV. More features (Chromecast, Quality Chooser, Playlist, Google Analytics, etc.) available at https://github.com/mediaelement/mediaelement-plugins",
   "repository": "http://github.com/mediaelement/mediaelement/",
