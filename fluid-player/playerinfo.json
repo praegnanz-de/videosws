@@ -1,6 +1,6 @@
 {
   "name": "Fluid Player",
-  "version": "1.0.1",
+  "version": "2.2.2",
   "url": "https://github.com/fluid-player/fluid-player",
   "description": "Fluid Player is a new free HTML5 video player. It is lightweight, easy to integrate and has advanced VAST* capabilities",
   "pricing": {
@@ -10,31 +10,31 @@
   },
   "license": "mit",
   "library": [],
-  "hosted": false,
+  "hosted": "possible",
   "repository": "https://github.com/fluid-player/fluid-player",
   "example": {
-    "css": "vast.css",
-    "jsHead": "vast.js"
+    "css": "https://cdn.fluidplayer.com/v2/current/fluidplayer.min.css",
+    "jsHead":  "https://cdn.fluidplayer.com/v2/current/fluidplayer.min.js"
   },
   "flags": {
     "flash": false,
     "api": false,
     "unifiedAPI": false,
     "fullscreen": true,
-    "keyboard": false,
+    "keyboard": true,
     "subtitles": false,
     "chapters": false,
     "playlists": false,
     "responsive": true,
     "embeddable": true,
-    "cms": [],
+    "cms": "wordpress",
     "services": [],
     "skinnable": true,
     "audioOnly": false,
     "speedControl": false,
-    "qualityControl": false,
+    "qualityControl": true,
     "aria": false,
     "hls": true,
-    "dash": false
+    "dash": true
   }
 }
