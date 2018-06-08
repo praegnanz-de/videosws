@@ -1,6 +1,6 @@
 {
   "name": "Fluid Player",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "url": "https://github.com/fluid-player/fluid-player",
   "description": "Fluid Player is a new free HTML5 video player. It is lightweight, easy to integrate and has advanced VAST* capabilities",
   "pricing": {
@@ -18,7 +18,7 @@
   },
   "flags": {
     "flash": false,
-    "api": false,
+    "api": true,
     "unifiedAPI": false,
     "fullscreen": true,
     "keyboard": true,
