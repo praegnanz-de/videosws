@@ -1,6 +1,6 @@
 {
-  "name": "Bitmovin Adaptive Streaming Player",
-  "version": "7",
+  "name": "Bitmovin Video Player",
+  "version": "8",
   "url": "https://bitmovin.com/",
   "description": "Bitmovin's Adaptive Streaming Player enables HTML5 adaptive streaming with MPEG-DASH and HLS native in your browser with no need for plugins like Flash or Silverlight. Due to the native integration with the browser it is possible to play back very high resolutions such as 4K or very high framerates like 60fps. Multiple DRM systems, e.g., PlayReady, Widevine, FairPlay and Access/PrimeTime can be used in parallel with Bitmovin’s player implementation, to achieve highest browser coverage – also for protected- and studio content. The rich feature set of our player further includes advertising, using VAST, cutting edge technologies, like VR and 360° video and many more.",
   "license": "https://bitmovin.com/terms/",
@@ -13,7 +13,7 @@
   "hosted": "possible",
 
   "example": {
-    "jsHead": ["https://bitmovin-a.akamaihd.net/bitmovin-player/stable/7/bitmovinplayer.js"]
+    "jsHead": ["https://cdn.bitmovin.com/player/web/8/bitmovinplayer.js"]
   },
 
   "flags": {
@@ -24,10 +24,10 @@
     "fullscreen": true,
     "keyboard": true,
     "subtitles": true,
-    "chapters": false,
+    "chapters": true,
     "playlists": false,
     "responsive": true,
-    "embeddable": false,
+    "embeddable": true,
     "cms": [
       "wordpress"
     ],
