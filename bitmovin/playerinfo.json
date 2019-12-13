@@ -36,7 +36,7 @@
     "audioOnly": true,
     "speedControl": true,
     "qualityControl": true,
-    "aria": false,
+    "aria": true,
     "hls": true,
     "dash": true
   }
