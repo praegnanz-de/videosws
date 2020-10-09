@@ -1,0 +1,43 @@
+{
+  "name": "openplayerjs",
+  "version": "latest",
+  "url": "https://www.openplayerjs.com/",
+  "description": "afterglow is a super easy to integrate, fully responsive HTML5 video player with support for lightboxing and YouTube.",
+  "repository": "https://github.com/openplayerjs/openplayerjs",
+  "license": "mit",
+  "pricing": {
+    "once": false,
+    "subscription": false
+  },
+
+  "library": [],
+  "hosted": "possible",
+
+  "example": {
+    "css": ["https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.min.css"],
+    "jsHead": ["https://cdn.jsdelivr.net/npm/openplayerjs@latest/dist/openplayer.min.js"]
+  },
+
+  "flags": {
+    "flash": false,
+    "services": "",
+    "unifiedLook": true,
+    "api": true,
+    "unifiedAPI": true,
+    "responsive": true,
+    "skinnable": true,
+    "embeddable": false,
+    "audioOnly": false,
+    "cms": [],
+    "fullscreen": true,
+    "keyboard": true,
+    "aria": true,
+    "subtitles": true,
+    "chapters": false,
+    "playlists": false,
+    "speedControl": true,
+    "qualityControl": true,
+    "hls": true,
+    "dash": true
+  }
+}
