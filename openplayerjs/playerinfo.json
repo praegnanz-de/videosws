@@ -2,7 +2,7 @@
   "name": "openplayerjs",
   "version": "latest",
   "url": "https://www.openplayerjs.com/",
-  "description": "afterglow is a super easy to integrate, fully responsive HTML5 video player with support for lightboxing and YouTube.",
+  "description": "OpenPlayerJS is a media player that uses all the goods of HTML5 video/audio elements to play the most popular media in MP4/MP3, HLS and M(PEG)-DASH, and also has the ability to play VMAP, VAST and VPAID ads.",
   "repository": "https://github.com/openplayerjs/openplayerjs",
   "license": "mit",
   "pricing": {
